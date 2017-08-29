@@ -1,0 +1,28 @@
+<?php
+
+namespace Modules\Dishes\Events;
+
+use Modules\Dishes\Entities\DishCategory;
+use Modules\Media\Contracts\StoringMedia;
+
+class DishesCategoryWasCreated implements StoringMedia
+{
+    public $data;
+    public $dish_category;
+
+    public function __construct($dish_category, array $data)
+    {
+        $this->data = $data;
+        $this->dish_category = $dish_category;
+    }
+
+    public function getEntity()
+    {
+        return $this->dish_category;
+    }
+
+    public function getSubmissionData()
+    {
+        return $this->data;
+    }
+}
