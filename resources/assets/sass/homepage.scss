@@ -1,0 +1,209 @@
+.page{
+  &-home{
+    color:#fff;
+    .page__intro{
+      text-align:center;
+      max-width:700px;
+      margin:0 auto 100px;
+      p{
+        line-height:30px;
+      }
+      h1{
+        line-height: 200px;
+      }
+      .page__intro-slogan{
+        max-width:400px;
+        margin: 0 auto;
+        text-align:center;
+        font-weight:500;
+        font-size:24px;
+        border-top:1px solid #fff;
+        border-bottom:1px solid #fff;
+      }
+    }
+    .page-home__dishes_categories{
+      text-align:center;
+      .page-home__dishes_category-dish{
+        max-width:300px;
+        padding-bottom:10px;
+        background:#fff;
+        margin:60px auto 0;
+        color:rgba(0,0,0,0.7);
+        .dish__title{
+          margin:0;
+          line-height:60px;
+          color:#fff;
+          background-color:$red;
+        }
+        .dish__preview{
+          max-width:100%;
+        }
+        .dish__description{
+          font-size:18px;
+          line-height:26px;
+          padding:15px 15px 0;
+        }
+        .dish__link{
+          margin-top: 35px;
+        }
+      }
+    }
+    .page-home__dishes-catalog{
+      background-color: $darkbrown;
+      .dishes-catalog__catalog{
+        text-align:center;
+        margin-top:50px;
+        .dishes-catalog__catalog-items{
+          margin-bottom:60px;
+        }
+        &-item{
+          position:relative;
+          width:100%;
+          text-align:left;
+          display:inline-block;
+          border-bottom: 1px dashed #fff;
+          padding-bottom:15px;
+          margin-top:20px;
+          .catalog-item__title{
+            font-size:24px;
+            color:$red;
+          }
+          .catalog-item__short-contain{
+            margin-top:30px;
+          }
+          .catalog-item__price{
+            position:Absolute;
+            top:0;
+            right:0;
+            background: $red;
+            padding:5px;
+            border-radius:3px;
+          }
+        }
+      }
+
+      .dishes-catalog__catalog-dishes{
+        text-align:center;
+        margin-top:50px;
+
+        >.dish{
+          display:inline-block;
+          width: 250px;
+          height: 330px;
+          background-color: #fff;
+          color:#000;
+          margin:15px 5px 0;
+          text-align: left;
+          transition:all 0.5s;
+          .dish__preview{
+            img{
+              width:100%;
+              height:250px;
+            }
+          }
+          .dish__data{
+            padding-left:10px;
+            .dish__data-title{
+              font-size:24px;
+              font-weight:900;
+              margin: 10px 0 0 0;
+              transition: all 0.5s;
+            }
+            .dish__data-category{
+              color:#d19366;
+              transition: all 0.5s;
+              margin-top: 5px;
+            }
+          }
+          &:hover{
+            background:$red;
+            .dish__data{
+              .dish__data-title{
+                color:#fff;
+              }
+              .dish__data-category{
+                color:#fff;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .page-home__about{
+      background:rgba(0,0,0,0.7);
+      .about__slider{
+        padding:0 50px;
+        .slick-list{
+          padding-top:30px !important;
+          height: 300px;
+        }
+        margin-top:40px;
+        .slide{
+          &:active,
+          &:focus{
+            border:none !important;
+            box-shadow:none !important;
+            outline: none;
+          }
+          img{
+            width: 200px;
+            height: 200px;
+            display:block;
+            margin:0 auto;
+            transition:all 0.7s;
+          }
+        }
+        .slick-prev,
+        .slick-next{
+          top: 128px;
+          opacity:1;
+          background: url(/images/chevron-right.svg);
+          background-size: 100% 100%;
+          width: 30px;
+          height: 50px;
+          &::before{
+            content: none;
+          }
+        }
+        .slick-prev{
+          transform:rotate(180deg);
+          top: 104px;
+          left:0;
+        }
+        .slick-next{
+          right:0;
+        }
+      }
+    }
+
+
+    .page-home__feedbacks{
+      background-color: $darkbrown;
+      padding-bottom: 100px;
+      form{
+        text-align:center;
+        label{
+          text-align:left;
+          width:100%;
+          p{
+            margin:30px 0 5px;
+          }
+          input,
+          textarea{
+            border-radius: 2px;
+            background-color: $lightbrown;
+            border:none;
+            width:100%;
+            padding:15px 20px;
+            color:#fff;
+          }
+          textarea{
+            height:150px;
+            margin-bottom:30px;
+          }
+        }
+      }
+    }
+  }
+}

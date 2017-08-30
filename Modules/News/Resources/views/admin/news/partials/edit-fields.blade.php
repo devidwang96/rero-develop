@@ -1,5 +1,4 @@
 <div class="box-body">
-    {{  dump($errors)  }}
     <div class='form-group{{ $errors->has("$lang.title") ? ' has-error' : '' }}'>
         <?php $oldTitle = isset($news->translate($lang)->title) ? $news->translate($lang)->title : ''; ?>
         {!! Form::label("{$lang}[title]", trans('news::news.form.title')) !!}

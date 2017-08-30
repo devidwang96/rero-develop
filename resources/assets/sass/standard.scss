@@ -1,0 +1,93 @@
+@font-face {
+  font-family: 'OpenSansCondensedLight';
+  src: url('../fonts/OpenSans-CondensedLight/OpenSans-CondensedLight.eot');
+  src: url('../fonts/OpenSans-CondensedLight/OpenSans-CondensedLight.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/OpenSans-CondensedLight/OpenSans-CondensedLight.woff') format('woff'),
+  url('../fonts/OpenSans-CondensedLight/OpenSans-CondensedLight.ttf') format('truetype'),
+  url('../fonts/OpenSans-CondensedLight/OpenSans-CondensedLight.svg#OpenSans-CondensedLight') format('svg');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+*{
+  box-sizing:border-box;
+  font-family: 'OpenSansCondensedLight';
+  font-size:18px;
+}
+ul{
+  margin:0;
+  padding:0;
+}
+h1,h2{
+  text-align:center;
+}
+h1{
+  font-size:48px;
+  font-weight:700;
+}
+h2{
+  font-size:36px;
+}
+h3{
+  font-size:24px;
+}
+section{
+  margin-top:30px;
+  padding:50px 0;
+}
+
+.section-title{
+  margin:0;
+  color: $red;
+}
+.title-addition{
+  text-align:center;
+  margin: 15px 0;
+}
+
+section.home-section{
+  margin:0;
+}
+
+textarea{
+  resize: none;
+}
+
+
+body{
+  margin: 0;
+  background:url(http://www.1zoom.net/big2/44/229358-svetik.jpg);
+  background-attachment: fixed;
+  background-size:110% auto;
+  background-position: center right;
+}
+a{
+  color:#fff;
+  text-decoration:none;
+  font-size:18px;
+}
+
+.button{
+  font-size:18px;
+  text-transform:uppercase;
+  border-radius:3px;
+  transition: all 0.5s;
+  padding:10px 25px;
+  &.button-white{
+    color:#000;
+    background:#fff;
+    &:hover{
+      color:#fff;
+      background: $red;
+    }
+  }
+
+  &.button-red{
+    color:#fff;
+    background: $red;
+    &:hover{
+      background: $darkblue;
+    }
+  }
+}

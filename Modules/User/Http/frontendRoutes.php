@@ -21,4 +21,5 @@ $router->group(['prefix' => 'auth'], function (Router $router) {
     $router->post('reset/{id}/{code}', ['as' => 'reset.complete.post', 'uses' => 'AuthController@postResetComplete']);
     # Logout
     $router->get('logout', ['as' => 'logout', 'uses' => 'AuthController@getLogout']);
+
 });

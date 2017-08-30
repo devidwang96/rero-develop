@@ -10,7 +10,7 @@ class DishIsUpdating extends AbstractEntityHook implements EntityIsChanging
 {
     private $dish;
 
-    public function __construct(Dishes $dish, array $data)
+    public function __construct(Dish $dish, array $data)
     {
         parent::__construct($data);
 

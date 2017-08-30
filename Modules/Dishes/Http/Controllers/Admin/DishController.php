@@ -11,18 +11,22 @@ use Modules\Dishes\Http\Requests\UpdateDishRequest;
 use Modules\Dishes\Repositories\DishRepository;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
+use Modules\Media\Repositories\FileRepository;
+
 class DishController extends AdminBaseController
 {
     /**
      * @var DishRepository
      */
     private $dish;
+    private $file;
 
-    public function __construct(DishRepository $dish)
+    public function __construct(DishRepository $dish, FileRepository $file)
     {
         parent::__construct();
 
         $this->dish = $dish;
+        $this->file = $file;
     }
 
     /**
@@ -73,9 +77,10 @@ class DishController extends AdminBaseController
      */
     public function edit(Dish $dish)
     {
+        $categories = DishCategory::all();
 
         $thumbnail = $this->file->findFileByZoneForEntity('DishesGallery', $dish);
-        return view('dishes::admin.dishes.edit', compact('dish', 'thumbnail'));
+        return view('dishes::admin.dishes.edit', compact('dish', 'thumbnail', 'categories'));
     }
 
     /**

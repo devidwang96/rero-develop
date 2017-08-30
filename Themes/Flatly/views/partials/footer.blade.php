@@ -1,7 +1,7 @@
-<footer class="container">
-    <div class="row">
-        <div class="col-md-12">
-            footer
-        </div>
+<div class="footer">
+    <div class="container">
+        <p class="footer__copyright">
+            ©  2017. Cafe Rero. All Rights Reservered.
+        </p>
     </div>
-</footer>
+</div>

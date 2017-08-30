@@ -1,2 +1,12 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+ @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+$red: rgb(210, 70, 45);
+$darkblue: rgb(19, 32, 46);
+$darkbrown :#24140e;
+$lightbrown : #503626;
+
+@import "header.scss";
+@import "footer.scss";
+
+@import "standard.scss";
+@import "homepage.scss";
