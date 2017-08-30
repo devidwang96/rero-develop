@@ -10,28 +10,19 @@
         @section('title')@setting('core::site-name')@show
     </title>
     <link rel="shortcut icon" href="{{ Theme::url('favicon.ico') }}">
-    <link rel="stylesheet" href="/libs/bootstrap.min.css">
-    <link rel="stylesheet" href="/libs/bootstrap-theme.min.css">
 
-    <link rel="stylesheet" href="/css/app.css">
-    <script src="/libs/jquery-3.2.1.min.js"></script>
-
-    <script src="/libs/bootstrap.min.js"></script>
-    @section('additions')
-    @show
+    {!! Theme::style('css/main.css') !!}
 </head>
 <body>
 
-<div class="wrapper">
-@include('partials.header')
+@include('partials.navigation')
 
+<div class="container">
     @yield('content')
-
+</div>
 @include('partials.footer')
 
-</div>
-
-{{--{!! Theme::script('js/all.js') !!}--}}
+{!! Theme::script('js/all.js') !!}
 @yield('scripts')
 
 <?php if (Setting::has('core::analytics-script')): ?>
