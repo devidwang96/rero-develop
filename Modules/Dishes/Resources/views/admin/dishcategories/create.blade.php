@@ -36,7 +36,7 @@
         <div class="col-md-3">
             <div class="box box-primary">
                 <div class="box-body">
-                    @mediaSingle('DishesCategoryThumb')
+                    @mediaSingle('DishesCategory')
                 </div>
             </div>
         </div>

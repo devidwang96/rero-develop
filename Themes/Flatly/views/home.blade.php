@@ -33,30 +33,19 @@
 
 
                 <div class="row">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="page-home__dishes_category-dish">
-                            <h3 class="dish__title">Название категории</h3>
-                            <img src="http://i.dailymail.co.uk/i/pix/2017/03/07/01/3E06BC7D00000578-0-image-a-33_1488851670298.jpg" alt="" class="dish__preview">
-                            <p class="dish__description">Condimentum laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat</p>
-                            <p class="dish__link"><a href="" class="button button-red">Посмотреть</a></p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="page-home__dishes_category-dish">
-                            <h3 class="dish__title">Название категории</h3>
-                            <img src="http://i.dailymail.co.uk/i/pix/2017/03/07/01/3E06BC7D00000578-0-image-a-33_1488851670298.jpg" alt="" class="dish__preview">
-                            <p class="dish__description">Condimentum laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat</p>
-                            <p class="dish__link"><a href="" class="button button-red">Посмотреть</a></p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="page-home__dishes_category-dish">
-                            <h3 class="dish__title">Название категории</h3>
-                            <img src="http://i.dailymail.co.uk/i/pix/2017/03/07/01/3E06BC7D00000578-0-image-a-33_1488851670298.jpg" alt="" class="dish__preview">
-                            <p class="dish__description">Condimentum laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat</p>
-                            <p class="dish__link"><a href="" class="button button-red">Посмотреть</a></p>
-                        </div>
-                    </div>
+                        <?php foreach ($categories as $category): ?>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="page-home__dishes_category-dish">
+                                    <h3 class="dish__title">{{$category->title}}</h3>
+                                    <?php
+                                        $category_img = $files->findFileByZoneForEntity('DishesCategory', $category)->path;
+                                    ?>
+                                    <img src="{{ Imagy::getThumbnail($category_img, 'DishesCategoryOnMainThumb') }}">
+                                    <p class="dish__description">{{$category->teaser}}</p>
+                                    <p class="dish__link"><a href="/menu/{{$category->id}}" class="button button-red">Посмотреть</a></p>
+                                </div>
+                            </div>
+                        <?php endforeach ?>
 
                 </div>
             </div>
@@ -69,72 +58,18 @@
                 <p class="title-addition">Обслуживание только самых лучших кулинарных изысков. Приходите к нам и наслаждайтесь.</p>
 
                 <div class="dishes-catalog__catalog">
-                    <div class="dishes-catalog__catalog-items">
+                    <div class="dishes-catalog__catalog-items clearfix">
 
-                        <div class="col-md-6">
-                            <div class="dishes-catalog__catalog-item">
-                                <div class="catalog-item__title">Каша рисовая</div>
-                                <div class="catalog-item__short-contain">Рис, мясо и прочее содержание</div>
-                                <div class="catalog-item__price">100 руб.</div>
+
+                        <?php foreach ($dishes as $dish): ?>
+                            <div class="col-md-6">
+                                <div class="dishes-catalog__catalog-item">
+                                    <div class="catalog-item__title">{{$dish->title}}</div>
+                                    <div class="catalog-item__short-contain">{{$dish->short_contain}}</div>
+                                    <div class="catalog-item__price">{{$dish->price}} руб.</div>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="dishes-catalog__catalog-item">
-                                <div class="catalog-item__title">Каша рисовая</div>
-                                <div class="catalog-item__short-contain">Рис, мясо и прочее содержание</div>
-                                <div class="catalog-item__price">100 руб.</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="dishes-catalog__catalog-item">
-                                <div class="catalog-item__title">Каша рисовая</div>
-                                <div class="catalog-item__short-contain">Рис, мясо и прочее содержание</div>
-                                <div class="catalog-item__price">100 руб.</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="dishes-catalog__catalog-item">
-                                <div class="catalog-item__title">Каша рисовая</div>
-                                <div class="catalog-item__short-contain">Рис, мясо и прочее содержание</div>
-                                <div class="catalog-item__price">100 руб.</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="dishes-catalog__catalog-item">
-                                <div class="catalog-item__title">Каша рисовая</div>
-                                <div class="catalog-item__short-contain">Рис, мясо и прочее содержание</div>
-                                <div class="catalog-item__price">100 руб.</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="dishes-catalog__catalog-item">
-                                <div class="catalog-item__title">Каша рисовая</div>
-                                <div class="catalog-item__short-contain">Рис, мясо и прочее содержание</div>
-                                <div class="catalog-item__price">100 руб.</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="dishes-catalog__catalog-item">
-                                <div class="catalog-item__title">Каша рисовая</div>
-                                <div class="catalog-item__short-contain">Рис, мясо и прочее содержание</div>
-                                <div class="catalog-item__price">100 руб.</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="dishes-catalog__catalog-item">
-                                <div class="catalog-item__title">Каша рисовая</div>
-                                <div class="catalog-item__short-contain">Рис, мясо и прочее содержание</div>
-                                <div class="catalog-item__price">100 руб.</div>
-                            </div>
-                        </div>
-
+                        <?php endforeach; ?>
 
                     </div>
 
@@ -143,92 +78,30 @@
                 </div>
 
                 <div class="dishes-catalog__catalog-dishes">
-                    <a href="#" class="dish">
-                        <div class="dish__preview">
-                            <img src="/plov_ava.jpg" alt="">
-                        </div>
-                        <div class="dish__data">
-                            <p class="dish__data-title">Плов</p>
-                            <p class="dish__data-category">Вторые блюда</p>
-                        </div>
-                    </a>
 
-                    <a href="#" class="dish">
-                        <div class="dish__preview">
-                            <img src="/plov_ava.jpg" alt="">
-                        </div>
-                        <div class="dish__data">
-                            <p class="dish__data-title">Плов</p>
-                            <p class="dish__data-category">Вторые блюда</p>
-                        </div>
-                    </a>
+                    <?php foreach ($dishes as $dish): ?>
+                        <a href="/dishes/{{$dish->id}}" class="dish">
+                            <div class="dish__preview">
+                                <?php
+                                    $dish_img = $files->findFileByZoneForEntity('DishesGallery', $dish)->path;
+                                ?>
+                                <img src="{{ Imagy::getThumbnail($dish_img, 'DishesOnMainThumb') }}">
+                            </div>
+                            <div class="dish__data">
+                                <p class="dish__data-title">{{$dish->title}}</p>
+                                <p class="dish__data-category">{{ $categories->find($dish->category_id)->title }}</p>
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
 
-                    <a href="#" class="dish">
-                        <div class="dish__preview">
-                            <img src="/plov_ava.jpg" alt="">
-                        </div>
-                        <div class="dish__data">
-                            <p class="dish__data-title">Плов</p>
-                            <p class="dish__data-category">Вторые блюда</p>
-                        </div>
-                    </a>
 
-                    <a href="#" class="dish">
-                        <div class="dish__preview">
-                            <img src="/plov_ava.jpg" alt="">
-                        </div>
-                        <div class="dish__data">
-                            <p class="dish__data-title">Плов</p>
-                            <p class="dish__data-category">Вторые блюда</p>
-                        </div>
-                    </a>
-
-                    <a href="#" class="dish">
-                        <div class="dish__preview">
-                            <img src="/plov_ava.jpg" alt="">
-                        </div>
-                        <div class="dish__data">
-                            <p class="dish__data-title">Плов</p>
-                            <p class="dish__data-category">Вторые блюда</p>
-                        </div>
-                    </a>
-
-                    <a href="#" class="dish">
-                        <div class="dish__preview">
-                            <img src="/plov_ava.jpg" alt="">
-                        </div>
-                        <div class="dish__data">
-                            <p class="dish__data-title">Плов</p>
-                            <p class="dish__data-category">Вторые блюда</p>
-                        </div>
-                    </a>
-
-                    <a href="#" class="dish">
-                        <div class="dish__preview">
-                            <img src="/plov_ava.jpg" alt="">
-                        </div>
-                        <div class="dish__data">
-                            <p class="dish__data-title">Плов</p>
-                            <p class="dish__data-category">Вторые блюда</p>
-                        </div>
-                    </a>
-
-                    <a href="#" class="dish">
-                        <div class="dish__preview">
-                            <img src="/plov_ava.jpg" alt="">
-                        </div>
-                        <div class="dish__data">
-                            <p class="dish__data-title">Плов</p>
-                            <p class="dish__data-category">Вторые блюда</p>
-                        </div>
-                    </a>
                 </div>
             </div>
         </section>
 
         <section class="page-home__about home-section">
             <div class="container">
-                <h2 class="section-title">Наша команда</h2>
+                <h2 class="section-title">Наша жизнь</h2>
 
                 <div class="about__slider">
                     <div class="slide">

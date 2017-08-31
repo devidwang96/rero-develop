@@ -5965,7 +5965,8 @@ a {
         color: #000;
         margin: 15px 5px 0;
         text-align: left;
-        transition: all 0.5s; }
+        transition: all 0.5s;
+        text-decoration: none !important; }
         .page-home .page-home__dishes-catalog .dishes-catalog__catalog-dishes > .dish .dish__preview img {
           width: 100%;
           height: 250px; }

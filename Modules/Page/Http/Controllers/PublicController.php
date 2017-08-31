@@ -8,6 +8,11 @@ use Modules\Menu\Repositories\MenuItemRepository;
 use Modules\Page\Entities\Page;
 use Modules\Page\Repositories\PageRepository;
 
+use Modules\Media\Repositories\FileRepository;
+
+use Modules\Dishes\Entities\Dish;
+use Modules\Dishes\Entities\DishCategory;
+
 class PublicController extends BasePublicController
 {
     /**
@@ -44,15 +49,18 @@ class PublicController extends BasePublicController
     /**
      * @return \Illuminate\View\View
      */
-    public function homepage()
+    public function homepage(FileRepository $files)
     {
+        $dishes = Dish::all();
+        $categories = DishCategory::all();
+
         $page = $this->page->findHomepage();
 
         $this->throw404IfNotFound($page);
 
         $template = $this->getTemplateForPage($page);
 
-        return view($template, compact('page'));
+        return view($template, compact('page', 'dishes', 'files', 'categories'));
     }
 
     /**
