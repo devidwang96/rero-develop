@@ -47,6 +47,15 @@
         </div>
 
         <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class='form-group{{ $errors->has("$lang.show_full_menu_string") ? ' has-error' : '' }}'>
+                <?php $old_show_full_menu_string = isset($mainpage->translate($lang)->show_full_menu_string) ? $mainpage->translate($lang)->show_full_menu_string : ''; ?>
+                {!! Form::label("{$lang}[show_full_menu_string]", trans('mainpage::mainpage.form.show_full_menu_string')) !!}
+                {!! Form::text("{$lang}[show_full_menu_string]", old("$lang.[show_full_menu_string]", $old_show_full_menu_string), ['class' => 'form-control', 'placeholder' => trans('mainpage::mainpage.form.show_full_menu_string')]) !!}
+                {!! $errors->first("$lang.show_full_menu_string", '<span class="help-block">:message</span>') !!}
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12">
             <div class='form-group{{ $errors->has("$lang.gallery_title") ? ' has-error' : '' }}'>
                 <?php $old_gallery_title = isset($mainpage->translate($lang)->gallery_title) ? $mainpage->translate($lang)->gallery_title : ''; ?>
                 {!! Form::label("{$lang}[gallery_title]", trans('mainpage::mainpage.form.gallery_title')) !!}
@@ -82,14 +91,20 @@
             </div>
         </div>
 
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <div class='form-group{{ $errors->has("$lang.addition_content") ? ' has-error' : '' }}'>
-                <?php $old_addition_content = isset($mainpage->translate($lang)->addition_content) ? $mainpage->translate($lang)->addition_content : ''; ?>
-                {!! Form::label("{$lang}[addition_content]", trans('mainpage::mainpage.form.addition_content')) !!}
-                {!! Form::text("{$lang}[addition_content]", old("$lang.[addition_content]", $old_addition_content), ['class' => 'form-control', 'placeholder' => trans('mainpage::mainpage.form.addition_content')]) !!}
-                {!! $errors->first("$lang.addition_content", '<span class="help-block">:message</span>') !!}
+        <div class="col-xs-12">
+            <div class='form-group{{ $errors->has("$lang.addition_content_title") ? ' has-error' : '' }}'>
+                <?php $old_addition_content_title = isset($mainpage->translate($lang)->addition_content_title) ? $mainpage->translate($lang)->addition_content_title : ''; ?>
+                {!! Form::label("{$lang}[addition_content_title]", trans('mainpage::mainpage.form.addition_content_title')) !!}
+                {!! Form::text("{$lang}[addition_content_title]", old("$lang.[addition_content_title]", $old_addition_content_title), ['class' => 'form-control', 'placeholder' => trans('mainpage::mainpage.form.addition_content_title')]) !!}
+                {!! $errors->first("$lang.addition_content_title", '<span class="help-block">:message</span>') !!}
             </div>
         </div>
+
+        <div class="col-xs-12">
+            <?php $old_addition_content = isset($mainpage->translate($lang)->addition_content) ? $mainpage->translate($lang)->addition_content : ''; ?>
+            @editor('addition_content', trans('dishes::dishes.form.addition_content'), old("{$lang}.addition_content", $old_addition_content), $lang)
+        </div>
+
 
 
     </div>

@@ -62,14 +62,15 @@ CREATE TABLE IF NOT EXISTS `dishes__dishcategories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Дамп данных таблицы rero.dishes__dishcategories: ~2 rows (приблизительно)
 DELETE FROM `dishes__dishcategories`;
 /*!40000 ALTER TABLE `dishes__dishcategories` DISABLE KEYS */;
 INSERT INTO `dishes__dishcategories` (`id`, `created_at`, `updated_at`) VALUES
 	(1, '2017-08-28 12:59:23', '2017-08-28 12:59:23'),
-	(2, '2017-08-28 13:57:04', '2017-08-28 13:57:04');
+	(2, '2017-08-28 13:57:04', '2017-08-28 13:57:04'),
+	(4, '2017-09-01 09:51:21', '2017-09-01 09:51:21');
 /*!40000 ALTER TABLE `dishes__dishcategories` ENABLE KEYS */;
 
 -- Дамп структуры для таблица rero.dishes__dishcategory_translations
@@ -86,16 +87,18 @@ CREATE TABLE IF NOT EXISTS `dishes__dishcategory_translations` (
   UNIQUE KEY `dishes__dishcategory_translations_dish_category_id_locale_unique` (`dish_category_id`,`locale`),
   KEY `dishes__dishcategory_translations_locale_index` (`locale`),
   CONSTRAINT `dishes__dishcategory_translations_dish_category_id_foreign` FOREIGN KEY (`dish_category_id`) REFERENCES `dishes__dishcategories` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы rero.dishes__dishcategory_translations: ~4 rows (приблизительно)
+-- Дамп данных таблицы rero.dishes__dishcategory_translations: ~6 rows (приблизительно)
 DELETE FROM `dishes__dishcategory_translations`;
 /*!40000 ALTER TABLE `dishes__dishcategory_translations` DISABLE KEYS */;
 INSERT INTO `dishes__dishcategory_translations` (`id`, `dish_category_id`, `locale`, `title`, `teaser`, `status`, `on_main`) VALUES
 	(1, 1, 'en', 'fsefsef', 'fsefsef', 1, 0),
 	(2, 1, 'ru', 'srghksgse', 'srghksgse', 1, 0),
 	(3, 2, 'en', 'First dishes', 'First dishes', 1, 1),
-	(4, 2, 'ru', 'Первые блюда', 'Первые блюда', 1, 0);
+	(4, 2, 'ru', 'Первые блюда', 'Первые блюда', 1, 0),
+	(8, 4, 'en', 'Secondary dishes', 'Secondary dishes', 0, 0),
+	(9, 4, 'ru', 'Вторые блюда', 'Вторые блюда', 0, 0);
 /*!40000 ALTER TABLE `dishes__dishcategory_translations` ENABLE KEYS */;
 
 -- Дамп структуры для таблица rero.dishes__dishes
@@ -138,11 +141,39 @@ CREATE TABLE IF NOT EXISTS `dishes__dish_translations` (
 DELETE FROM `dishes__dish_translations`;
 /*!40000 ALTER TABLE `dishes__dish_translations` DISABLE KEYS */;
 INSERT INTO `dishes__dish_translations` (`id`, `dish_id`, `locale`, `title`, `short_contain`, `full_description`, `status`, `on_main`) VALUES
-	(16, 9, 'en', 'Borsch', 'potatoes, meat, luk', '', 1, 0),
-	(17, 9, 'ru', 'Борщ', 'Картошка, мясо, говядина, лук', '', 1, 0),
-	(18, 10, 'en', 'awdawdawdыуаыуа', 'dawdawdыуаыуа', '<p>awdawdawdыуаыуа</p>\r\n', 0, 1),
-	(19, 10, 'ru', 'awdawdыуаыу123', 'awdawdыуаыуа', '<p>dawdыупыуа</p>\r\n', 0, 1);
+	(16, 9, 'en', 'Borsch', 'potatoes, meat, luk', '', 1, 1),
+	(17, 9, 'ru', 'Борщ', 'Картошка, мясо, говядина, лук', '', 1, 1),
+	(18, 10, 'en', 'awdawdawdыуаыуа', 'dawdawdыуаыуа', '<p>awdawdawdыуаыуа</p>\r\n', 1, 1),
+	(19, 10, 'ru', 'awdawdыуаыу123dqwedf', 'awdawdыуаыуаeddf', '<p>dawdыупыуа</p>\r\n', 1, 1);
 /*!40000 ALTER TABLE `dishes__dish_translations` ENABLE KEYS */;
+
+-- Дамп структуры для таблица rero.feedbacks__feedback
+DROP TABLE IF EXISTS `feedbacks__feedback`;
+CREATE TABLE IF NOT EXISTS `feedbacks__feedback` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `message` text COLLATE utf8_unicode_ci NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Дамп данных таблицы rero.feedbacks__feedback: ~9 rows (приблизительно)
+DELETE FROM `feedbacks__feedback`;
+/*!40000 ALTER TABLE `feedbacks__feedback` DISABLE KEYS */;
+INSERT INTO `feedbacks__feedback` (`id`, `name`, `email`, `message`, `status`, `created_at`, `updated_at`) VALUES
+	(3, 'awd', 'awdawd', 'awdawd', 1, '2017-09-01 06:54:41', '2017-09-01 06:54:41'),
+	(4, 'Дмитрий Дмитриевичsefsef', 'egseg@mail.ruefsef', '<p>Было охуенно</p>\r\n', 1, '2017-09-01 06:59:15', '2017-09-01 08:53:46'),
+	(5, 'Я такой', 'Емайл у меня тоже такой', 'У вас было афигенно', 0, '2017-09-01 12:11:34', '2017-09-01 12:11:34'),
+	(6, 'Я такой', 'Емайл у меня тоже такой', '<p>У вас было афигенно</p>\r\n', 1, '2017-09-01 12:14:33', '2017-09-01 12:44:35'),
+	(7, 'dbbdrgbr', 'rgrdgdrtgdr', 'gdrgdrg', 0, '2017-09-01 12:16:01', '2017-09-01 12:16:01'),
+	(8, 'gfsdrydry', 'gsrgwr', 'dfywr', 0, '2017-09-01 12:22:10', '2017-09-01 12:22:10'),
+	(9, 'qSQs', 'qSQsq', 'qSQs', 0, '2017-09-01 12:25:00', '2017-09-01 12:25:00'),
+	(10, 'awdawdaw', 'dawdawdaw', 'dawdawd', 0, '2017-09-01 12:37:25', '2017-09-01 12:37:25'),
+	(11, 'Дэвид Ван Анатольевич', 'rinzler91@mail.ru', '<p>Изумительный мастер массажа Елена! Её новая методика мягкого моделирующего энергетического массажа творит чудеса. После первого сеанса что-то происходит, после третьего уже просто не узнаешь свое лицо и тело. Все подтягивается, меняется силуэт, тургор кожи. Лежа, без боли, просто волшебно!!! Спасибо огромное Елене!!!</p>\r\n', 1, '2017-09-02 06:58:59', '2017-09-02 06:59:36');
+/*!40000 ALTER TABLE `feedbacks__feedback` ENABLE KEYS */;
 
 -- Дамп структуры для таблица rero.mainpage__mainpages
 DROP TABLE IF EXISTS `mainpage__mainpages`;
@@ -160,11 +191,11 @@ CREATE TABLE IF NOT EXISTS `mainpage__mainpages` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы rero.mainpage__mainpages: ~1 rows (приблизительно)
+-- Дамп данных таблицы rero.mainpage__mainpages: ~0 rows (приблизительно)
 DELETE FROM `mainpage__mainpages`;
 /*!40000 ALTER TABLE `mainpage__mainpages` DISABLE KEYS */;
 INSERT INTO `mainpage__mainpages` (`id`, `created_at`, `updated_at`, `menu_button_show`, `dishes_categories_show`, `dishes_menu_show`, `dishes_show`, `gallery_show`, `feedbacks_show`, `addition_content_show`) VALUES
-	(1, NULL, '2017-08-31 13:48:37', 1, 1, 1, 1, 1, 1, 0);
+	(1, NULL, '2017-09-02 11:00:17', 1, 1, 1, 1, 1, 1, 1);
 /*!40000 ALTER TABLE `mainpage__mainpages` ENABLE KEYS */;
 
 -- Дамп структуры для таблица rero.mainpage__mainpage_translations
@@ -178,10 +209,12 @@ CREATE TABLE IF NOT EXISTS `mainpage__mainpage_translations` (
   `show_menu_string` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `our_menu_string` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `our_menu_addition_string` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `show_full_menu_string` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `gallery_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `leave_feedback_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `leave_feedback_addition` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `copyrights` text COLLATE utf8_unicode_ci NOT NULL,
+  `addition_content_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `addition_content` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mainpage__mainpage_translations_mainpage_id_locale_unique` (`mainpage_id`,`locale`),
@@ -192,9 +225,9 @@ CREATE TABLE IF NOT EXISTS `mainpage__mainpage_translations` (
 -- Дамп данных таблицы rero.mainpage__mainpage_translations: ~2 rows (приблизительно)
 DELETE FROM `mainpage__mainpage_translations`;
 /*!40000 ALTER TABLE `mainpage__mainpage_translations` DISABLE KEYS */;
-INSERT INTO `mainpage__mainpage_translations` (`id`, `mainpage_id`, `locale`, `slogan_string`, `welcome_string`, `show_menu_string`, `our_menu_string`, `our_menu_addition_string`, `gallery_title`, `leave_feedback_title`, `leave_feedback_addition`, `copyrights`, `addition_content`) VALUES
-	(1, 1, 'ru', 'Приходите к нам и наслаждайтесь', 'Добро пожаловать в кафе "Рэро"', 'Показать наше меню', 'Наше меню', 'Наше обслуживание только из самых лучших кулинарных изысков. Приходите и наслаждайтесь:)', 'Наша жизнь', 'Оставьте отзыв :)', 'Нам очень интересно ваше мнение о нас', '© 2017. Cafe Rero. Все права защищены.', ''),
-	(2, 1, 'en', 'Come and enjoy', 'Welcome to "Rero" cafe', 'See our menu', 'Our menu', 'Service is only the best of the culinary delights. Come to us and enjoy.', 'Our life', 'Leave your feedback', 'We are interesting in your oppinion', '© 2017. Cafe Rero. All Rights Reservered.', '');
+INSERT INTO `mainpage__mainpage_translations` (`id`, `mainpage_id`, `locale`, `slogan_string`, `welcome_string`, `show_menu_string`, `our_menu_string`, `our_menu_addition_string`, `show_full_menu_string`, `gallery_title`, `leave_feedback_title`, `leave_feedback_addition`, `copyrights`, `addition_content_title`, `addition_content`) VALUES
+	(1, 1, 'ru', 'Приходите к нам и наслаждайтесь', 'Добро пожаловать в кафе "Рэро"', 'Показать наше меню', 'Наше меню', 'Наше обслуживание только из самых лучших кулинарных изысков. Приходите и наслаждайтесь:)', 'Посмотреть полный список', 'Наша жизнь', 'Оставьте отзыв :)', 'Нам очень интересно ваше мнение о нас', '© 2017. Cafe Rero. Все права защищены.', 'Кафе "Рэро"', '<p font-size:="" open="" style="margin: 0px 0px 15px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id mollis mauris, vel pellentesque risus. Donec luctus, lacus eu pellentesque hendrerit, justo neque tempor augue, ut tempus mi augue ac massa. Aliquam erat volutpat. Sed sed augue tortor. Integer imperdiet, mi et faucibus blandit, tellus justo congue mauris, non viverra elit tortor nec odio. Fusce luctus semper posuere. Duis hendrerit sem arcu, at laoreet nulla elementum sed. Morbi facilisis, massa a tempus gravida, sapien augue semper ligula, et vehicula mi orci sed nunc. Pellentesque tincidunt fermentum dignissim. Curabitur condimentum porttitor ex bibendum porta. Fusce non auctor nibh. Proin eu commodo sapien, eget rutrum ex. Phasellus nec ex sollicitudin, lobortis magna id, rhoncus libero. Pellentesque massa metus, bibendum ut metus eget, lacinia accumsan metus.</p>\r\n\r\n<p font-size:="" open="" style="margin: 0px 0px 15px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: "><img alt="" src="http://rero.dev/assets/media/813282176_DishesOnMainThumb.jpg" style="float: right; width: 250px; height: 250px;" />Nulla eros nisi, cursus ut lectus eu, dignissim sagittis lorem. Curabitur congue eu ipsum in ultricies. Proin vestibulum faucibus lectus ut mattis. Sed suscipit maximus arcu, et tincidunt dui mattis quis. Cras porttitor ex sit amet tristique tincidunt. Vivamus in tempus ipsum, vitae molestie urna. Pellentesque condimentum egestas felis sed mattis. Phasellus et elit consequat, volutpat lectus at, lobortis nibh. Nullam vel sagittis nunc. Nunc eget eros ligula. Sed porta vehicula enim, condimentum elementum odio finibus vel. Aenean fringilla tincidunt ligula nec ornare.</p>\r\n\r\n<p font-size:="" open="" style="margin: 0px 0px 15px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: ">Morbi euismod lectus et erat eleifend gravida. Suspendisse potenti. Pellentesque tempor varius gravida. Duis hendrerit posuere sapien, sed hendrerit erat viverra in. Donec ac ligula nec augue scelerisque imperdiet sit amet non tellus. Pellentesque eu interdum justo, sit amet vehicula ex. Pellentesque suscipit ipsum erat, id finibus ligula condimentum nec. Phasellus vestibulum, dolor et lacinia semper, tortor <img alt="" src="http://rero.dev/assets/media/16332-4essera-cafe-08_DishesOnMainThumb.jpg" style="color: rgb(0, 0, 0); text-align: justify; float: left; width: 250px; height: 250px;" />est pharetra enim, in vestibulum libero mi vitae tortor. Nullam lacinia sem in rhoncus viverra. Vestibulum non mollis lectus. Duis auctor dui dolor, non finibus nisl laoreet sit amet. Mauris id scelerisque velit. Mauris tempor metus tortor, fermentum pretium mauris ornare in.</p>\r\n\r\n<p font-size:="" open="" style="margin: 0px 0px 15px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: ">Duis et leo nibh. Nam ut nunc eleifend, suscipit dui eu, gravida mi. Proin feugiat augue mi, sed hendrerit odio volutpat at. Aenean sed risus nec eros feugiat cursus ac ac turpis. Quisque ultricies massa tincidunt euismod mattis. Vestibulum pharetra tincidunt est, mattis lobortis quam venenatis vitae. Quisque bibendum rutrum felis eget ultrices.</p>\r\n\r\n<p font-size:="" open="" style="margin: 0px 0px 15px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: ">Sed malesuada sem ut pretium gravida. Pellentesque condimentum eget purus ut varius. Suspendisse massa urna, consectetur et neque in, congue gravida lectus. Morbi non nunc lacus. Integer vestibulum lectus eu arcu pellentesque, nec faucibus tellus feugiat. Mauris a maximus erat, porttitor scelerisque felis. Etiam facilisis, ligula at faucibus eleifend, odio ante semper velit, quis scelerisque magna arcu ut enim. Duis laoreet mollis quam, tincidunt tristique lectus pharetra non. Pellentesque condimentum dolor ut efficitur eleifend. Curabitur vehicula est elementum, ultrices erat eleifend, ultricies erat. Nullam consequat interdum varius. Suspendisse venenatis sapien ut elit sollicitudin placerat.</p>\r\n\r\n<div>&nbsp;</div>\r\n'),
+	(2, 1, 'en', 'Come and enjoy', 'Welcome to "Rero" cafe', 'See our menu', 'Our menu', 'Service is only the best of the culinary delights. Come to us and enjoy.', 'See full menu', 'Our life', 'Leave your feedback', 'We are interesting in your oppinion', '© 2017. Cafe Rero. All Rights Reservered.', 'The "Rero" cafe', '<p font-size:="" open="" style="margin: 0px 0px 15px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id mollis mauris, vel pellentesque risus. Donec luctus, lacus eu pellentesque hendrerit, justo neque tempor augue, ut tempus mi augue ac massa. Aliquam erat volutpat. Sed sed augue tortor. Integer imperdiet, mi et faucibus blandit, tellus justo congue mauris, non viverra elit tortor nec odio. Fusce luctus semper posuere. Duis hendrerit sem arcu, at laoreet nulla elementum sed. Morbi facilisis, massa a tempus gravida, sapien augue semper ligula, et vehicula mi orci sed nunc. Pellentesque tincidunt fermentum dignissim. Curabitur condimentum porttitor ex bibendum porta. Fusce non auctor nibh. Proin eu commodo sapien, eget rutrum ex. Phasellus nec ex sollicitudin, lobortis magna id, rhoncus libero. Pellentesque massa metus, bibendum ut metus eget, lacinia accumsan metus.</p>\r\n\r\n<p font-size:="" open="" style="margin: 0px 0px 15px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: ">Nulla eros nisi, cursus ut lectus eu, dignissim sagittis lorem. Curabitur congue eu ipsum in ultricies. Proin vestibulum faucibus lectus ut mattis. Sed suscipit maximus arcu, et tincidunt dui mattis quis. Cras porttitor ex sit amet tristique tincidunt. Vivamus in tempus ipsum, vitae molestie urna. Pellentesque condimentum egestas felis sed mattis. Phasellus et elit consequat, volutpat lectus at, lobortis nibh. Nullam vel sagittis nunc. Nunc eget eros ligula. Sed porta vehicula enim, condimentum elementum odio finibus vel. Aenean fringilla tincidunt ligula nec ornare.</p>\r\n\r\n<p font-size:="" open="" style="margin: 0px 0px 15px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: ">Morbi euismod lectus et erat eleifend gravida. Suspendisse potenti. Pellentesque tempor varius gravida. Duis hendrerit posuere sapien, sed hendrerit erat viverra in. Donec ac ligula nec augue scelerisque imperdiet sit amet non tellus. Pellentesque eu interdum justo, sit amet vehicula ex. Pellentesque suscipit ipsum erat, id finibus ligula condimentum nec. Phasellus vestibulum, dolor et lacinia semper, tortor est pharetra enim, in vestibulum libero mi vitae tortor. Nullam lacinia sem in rhoncus viverra. Vestibulum non mollis lectus. Duis auctor dui dolor, non finibus nisl laoreet sit amet. Mauris id scelerisque velit. Mauris tempor metus tortor, fermentum pretium mauris ornare in.</p>\r\n\r\n<p font-size:="" open="" style="margin: 0px 0px 15px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: ">Duis et leo nibh. Nam ut nunc eleifend, suscipit dui eu, gravida mi. Proin feugiat augue mi, sed hendrerit odio volutpat at. Aenean sed risus nec eros feugiat cursus ac ac turpis. Quisque ultricies massa tincidunt euismod mattis. Vestibulum pharetra tincidunt est, mattis lobortis quam venenatis vitae. Quisque bibendum rutrum felis eget ultrices.</p>\r\n\r\n<p font-size:="" open="" style="margin: 0px 0px 15px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: ">Sed malesuada sem ut pretium gravida. Pellentesque condimentum eget purus ut varius. Suspendisse massa urna, consectetur et neque in, congue gravida lectus. Morbi non nunc lacus. Integer vestibulum lectus eu arcu pellentesque, nec faucibus tellus feugiat. Mauris a maximus erat, porttitor scelerisque felis. Etiam facilisis, ligula at faucibus eleifend, odio ante semper velit, quis scelerisque magna arcu ut enim. Duis laoreet mollis quam, tincidunt tristique lectus pharetra non. Pellentesque condimentum dolor ut efficitur eleifend. Curabitur vehicula est elementum, ultrices erat eleifend, ultricies erat. Nullam consequat interdum varius. Suspendisse venenatis sapien ut elit sollicitudin placerat.</p>\r\n');
 /*!40000 ALTER TABLE `mainpage__mainpage_translations` ENABLE KEYS */;
 
 -- Дамп структуры для таблица rero.media__files
@@ -210,9 +243,9 @@ CREATE TABLE IF NOT EXISTS `media__files` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы rero.media__files: ~12 rows (приблизительно)
+-- Дамп данных таблицы rero.media__files: ~34 rows (приблизительно)
 DELETE FROM `media__files`;
 /*!40000 ALTER TABLE `media__files` DISABLE KEYS */;
 INSERT INTO `media__files` (`id`, `filename`, `path`, `extension`, `mimetype`, `filesize`, `folder_id`, `created_at`, `updated_at`) VALUES
@@ -230,7 +263,26 @@ INSERT INTO `media__files` (`id`, `filename`, `path`, `extension`, `mimetype`, `
 	(12, '1350373127-vkusnie-vtorie-bluda_1.jpg', '/assets/media/1350373127-vkusnie-vtorie-bluda_1.jpg', 'jpg', 'image/jpeg', '500048', 0, '2017-08-26 02:37:45', '2017-08-26 02:37:45'),
 	(13, '171973.jpg', '/assets/media/171973.jpg', 'jpg', 'image/jpeg', '214767', 0, '2017-08-26 03:21:39', '2017-08-26 03:21:39'),
 	(14, '181.jpg', '/assets/media/181.jpg', 'jpg', 'image/jpeg', '2053748', 0, '2017-08-27 08:04:19', '2017-08-27 08:04:19'),
-	(15, '1323533893-12.jpg', '/assets/media/1323533893-12.jpg', 'jpg', 'image/jpeg', '986452', 0, '2017-08-31 10:17:06', '2017-08-31 10:17:06');
+	(15, '1323533893-12.jpg', '/assets/media/1323533893-12.jpg', 'jpg', 'image/jpeg', '986452', 0, '2017-08-31 10:17:06', '2017-08-31 10:17:06'),
+	(17, 'kak-prigotovit-uzbekskiy-plov.jpg', '/assets/media/kak-prigotovit-uzbekskiy-plov.jpg', 'jpg', 'image/jpeg', '89994', 0, '2017-09-01 02:56:52', '2017-09-01 02:56:52'),
+	(20, 'depositphotos-34743349-stock-photo-casual-man-unbuttoning-his-shirt.jpg', '/assets/media/depositphotos-34743349-stock-photo-casual-man-unbuttoning-his-shirt.jpg', 'jpg', 'image/jpeg', '67460', 0, '2017-09-01 05:24:36', '2017-09-01 05:24:36'),
+	(21, 'depositphotos-11960794-stock-photo-casual-man-with-arms-crossed.jpg', '/assets/media/depositphotos-11960794-stock-photo-casual-man-with-arms-crossed.jpg', 'jpg', 'image/jpeg', '81161', 0, '2017-09-01 05:24:36', '2017-09-01 05:24:36'),
+	(22, 'depositphotos-10796960-stock-photo-casual-man-looking-very-happy.jpg', '/assets/media/depositphotos-10796960-stock-photo-casual-man-looking-very-happy.jpg', 'jpg', 'image/jpeg', '58695', 0, '2017-09-01 05:24:37', '2017-09-01 05:24:37'),
+	(23, '181_1.jpg', '/assets/media/181_1.jpg', 'jpg', 'image/jpeg', '2053748', 0, '2017-09-01 06:34:54', '2017-09-01 06:34:54'),
+	(24, 'restoran-lrk.jpg', '/assets/media/restoran-lrk.jpg', 'jpg', 'image/jpeg', '1069391', 0, '2017-09-01 10:08:17', '2017-09-01 10:08:17'),
+	(25, 'restoran-regent-1.jpg', '/assets/media/restoran-regent-1.jpg', 'jpg', 'image/jpeg', '441502', 0, '2017-09-01 10:08:17', '2017-09-01 10:08:17'),
+	(26, '97-restorany.jpg', '/assets/media/97-restorany.jpg', 'jpg', 'image/jpeg', '150918', 0, '2017-09-01 10:08:19', '2017-09-01 10:08:19'),
+	(27, 'bg-restaurant.jpg', '/assets/media/bg-restaurant.jpg', 'jpg', 'image/jpeg', '1157977', 0, '2017-09-01 10:08:19', '2017-09-01 10:08:19'),
+	(28, '4f7cf433812a956f78024f49616713b3503a9d67.jpg', '/assets/media/4f7cf433812a956f78024f49616713b3503a9d67.jpg', 'jpg', 'image/jpeg', '100289', 0, '2017-09-01 10:08:20', '2017-09-01 10:08:20'),
+	(29, 'news1495707806.jpg', '/assets/media/news1495707806.jpg', 'jpg', 'image/jpeg', '531877', 0, '2017-09-01 10:08:20', '2017-09-01 10:08:20'),
+	(30, 'img-9733-h1000-retouch.jpg', '/assets/media/img-9733-h1000-retouch.jpg', 'jpg', 'image/jpeg', '448481', 0, '2017-09-01 10:08:21', '2017-09-01 10:08:21'),
+	(31, 'pizza-baking-fast-food-lunch-business-lunch-restaurant-snacks-food-1198767.jpg', '/assets/media/pizza-baking-fast-food-lunch-business-lunch-restaurant-snacks-food-1198767.jpg', 'jpg', 'image/jpeg', '204446', 0, '2017-09-01 10:28:55', '2017-09-01 10:28:55'),
+	(32, '1350373127-vkusnie-vtorie-bluda_2.jpg', '/assets/media/1350373127-vkusnie-vtorie-bluda_2.jpg', 'jpg', 'image/jpeg', '500048', 0, '2017-09-01 10:28:55', '2017-09-01 10:28:55'),
+	(33, 'wall-street-hotel-odessa-conference-hall-cafe.jpg', '/assets/media/wall-street-hotel-odessa-conference-hall-cafe.jpg', 'jpg', 'image/jpeg', '240940', 0, '2017-09-01 10:28:56', '2017-09-01 10:28:56'),
+	(34, 'kafe-5.jpg', '/assets/media/kafe-5.jpg', 'jpg', 'image/jpeg', '1439526', 0, '2017-09-01 10:28:56', '2017-09-01 10:28:56'),
+	(35, '813282176.jpg', '/assets/media/813282176.jpg', 'jpg', 'image/jpeg', '519211', 0, '2017-09-01 10:28:57', '2017-09-01 10:28:57'),
+	(36, '53564da61f883.jpg', '/assets/media/53564da61f883.jpg', 'jpg', 'image/jpeg', '1795517', 0, '2017-09-01 10:28:58', '2017-09-01 10:28:58'),
+	(37, '16332-4essera-cafe-08.jpg', '/assets/media/16332-4essera-cafe-08.jpg', 'jpg', 'image/jpeg', '688140', 0, '2017-09-01 10:28:59', '2017-09-01 10:28:59');
 /*!40000 ALTER TABLE `media__files` ENABLE KEYS */;
 
 -- Дамп структуры для таблица rero.media__file_translations
@@ -265,9 +317,9 @@ CREATE TABLE IF NOT EXISTS `media__imageables` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы rero.media__imageables: ~16 rows (приблизительно)
+-- Дамп данных таблицы rero.media__imageables: ~27 rows (приблизительно)
 DELETE FROM `media__imageables`;
 /*!40000 ALTER TABLE `media__imageables` DISABLE KEYS */;
 INSERT INTO `media__imageables` (`id`, `file_id`, `imageable_id`, `imageable_type`, `zone`, `order`, `created_at`, `updated_at`) VALUES
@@ -278,14 +330,26 @@ INSERT INTO `media__imageables` (`id`, `file_id`, `imageable_id`, `imageable_typ
 	(38, 14, 5, 'Modules\\Dishes\\Entities\\Dish', 'DishesGallery', 0, '2017-08-28 13:01:09', '2017-08-28 13:01:09'),
 	(39, 13, 5, 'Modules\\Dishes\\Entities\\Dish', 'DishesGallery', 1, '2017-08-28 13:01:09', '2017-08-28 13:01:09'),
 	(40, 12, 5, 'Modules\\Dishes\\Entities\\Dish', 'DishesGallery', 2, '2017-08-28 13:01:09', '2017-08-28 13:01:09'),
-	(50, 13, 9, 'Modules\\Dishes\\Entities\\Dish', 'DishesGallery', 0, '2017-08-28 13:58:44', '2017-08-28 13:58:44'),
-	(51, 12, 10, 'Modules\\Dishes\\Entities\\Dish', 'DishesGallery', 0, '2017-08-30 07:38:10', '2017-08-31 13:21:22'),
-	(53, 14, 10, 'Modules\\Dishes\\Entities\\Dish', 'DishesGallery', 1, '2017-08-30 07:38:10', '2017-08-31 13:21:22'),
+	(50, 13, 9, 'Modules\\Dishes\\Entities\\Dish', 'DishesGallery', 0, '2017-08-28 13:58:44', '2017-09-01 09:11:08'),
+	(51, 12, 10, 'Modules\\Dishes\\Entities\\Dish', 'DishesGallery', 0, '2017-08-30 07:38:10', '2017-09-01 12:16:42'),
+	(53, 14, 10, 'Modules\\Dishes\\Entities\\Dish', 'DishesGallery', 1, '2017-08-30 07:38:10', '2017-09-01 12:16:42'),
 	(54, 11, 1, 'Modules\\Dishes\\Entities\\DishCategory', 'DishesCategory', NULL, '2017-08-31 09:07:59', '2017-08-31 09:07:59'),
 	(55, 5, 2, 'Modules\\Dishes\\Entities\\DishCategory', 'DishesCategory', NULL, '2017-08-31 09:08:22', '2017-08-31 09:08:22'),
-	(56, 15, 1, 'Modules\\MainPage\\Entities\\Mainpage', 'IndexBg', 0, '2017-08-31 12:01:09', '2017-08-31 13:48:37'),
-	(58, 12, 1, 'Modules\\MainPage\\Entities\\Mainpage', 'IndexAbout', 0, '2017-08-31 12:01:09', '2017-08-31 13:48:37'),
-	(59, 11, 1, 'Modules\\MainPage\\Entities\\Mainpage', 'IndexAbout', 1, '2017-08-31 12:01:09', '2017-08-31 13:48:37');
+	(61, 17, 4, 'Modules\\Dishes\\Entities\\DishCategory', 'DishesCategory', NULL, '2017-09-01 09:51:21', '2017-09-01 09:51:21'),
+	(62, 30, 1, 'Modules\\MainPage\\Entities\\Mainpage', 'IndexAbout', 0, '2017-09-01 10:08:38', '2017-09-02 11:17:32'),
+	(63, 29, 1, 'Modules\\MainPage\\Entities\\Mainpage', 'IndexAbout', 1, '2017-09-01 10:08:38', '2017-09-02 11:17:32'),
+	(64, 28, 1, 'Modules\\MainPage\\Entities\\Mainpage', 'IndexAbout', 2, '2017-09-01 10:08:38', '2017-09-02 11:17:32'),
+	(65, 27, 1, 'Modules\\MainPage\\Entities\\Mainpage', 'IndexAbout', 3, '2017-09-01 10:08:38', '2017-09-02 11:17:32'),
+	(66, 26, 1, 'Modules\\MainPage\\Entities\\Mainpage', 'IndexAbout', 4, '2017-09-01 10:08:38', '2017-09-02 11:17:32'),
+	(67, 25, 1, 'Modules\\MainPage\\Entities\\Mainpage', 'IndexAbout', 5, '2017-09-01 10:08:38', '2017-09-02 11:17:32'),
+	(68, 24, 1, 'Modules\\MainPage\\Entities\\Mainpage', 'IndexAbout', 6, '2017-09-01 10:08:38', '2017-09-02 11:17:32'),
+	(69, 37, 1, 'Modules\\MainPage\\Entities\\Mainpage', 'IndexBg', 0, '2017-09-01 10:29:25', '2017-09-02 11:17:32'),
+	(70, 36, 1, 'Modules\\MainPage\\Entities\\Mainpage', 'IndexBg', 1, '2017-09-01 10:29:25', '2017-09-02 11:17:32'),
+	(71, 35, 1, 'Modules\\MainPage\\Entities\\Mainpage', 'IndexBg', 2, '2017-09-01 10:29:25', '2017-09-02 11:17:32'),
+	(72, 34, 1, 'Modules\\MainPage\\Entities\\Mainpage', 'IndexBg', 3, '2017-09-01 10:29:25', '2017-09-02 11:17:32'),
+	(73, 33, 1, 'Modules\\MainPage\\Entities\\Mainpage', 'IndexBg', 4, '2017-09-01 10:29:25', '2017-09-02 11:17:32'),
+	(74, 32, 1, 'Modules\\MainPage\\Entities\\Mainpage', 'IndexBg', 5, '2017-09-01 10:29:25', '2017-09-02 11:17:32'),
+	(75, 31, 1, 'Modules\\MainPage\\Entities\\Mainpage', 'IndexBg', 6, '2017-09-01 10:29:25', '2017-09-02 11:17:32');
 /*!40000 ALTER TABLE `media__imageables` ENABLE KEYS */;
 
 -- Дамп структуры для таблица rero.menu__menuitems
@@ -317,7 +381,7 @@ DELETE FROM `menu__menuitems`;
 /*!40000 ALTER TABLE `menu__menuitems` DISABLE KEYS */;
 INSERT INTO `menu__menuitems` (`id`, `menu_id`, `page_id`, `position`, `target`, `link_type`, `class`, `module_name`, `parent_id`, `lft`, `rgt`, `depth`, `created_at`, `updated_at`, `is_root`, `icon`) VALUES
 	(1, 2, NULL, 0, NULL, 'page', '', NULL, NULL, NULL, NULL, NULL, '2017-08-30 05:00:53', '2017-08-30 05:00:53', 1, NULL),
-	(2, 2, NULL, 0, '_self', 'internal', '', NULL, 1, NULL, NULL, NULL, '2017-08-30 05:02:16', '2017-08-30 05:02:16', 0, '');
+	(2, 2, NULL, 0, '_self', 'internal', '', NULL, 1, NULL, NULL, NULL, '2017-08-30 05:02:16', '2017-09-01 02:58:41', 0, '');
 /*!40000 ALTER TABLE `menu__menuitems` ENABLE KEYS */;
 
 -- Дамп структуры для таблица rero.menu__menuitem_translations
@@ -397,7 +461,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Дамп данных таблицы rero.migrations: ~39 rows (приблизительно)
 DELETE FROM `migrations`;
@@ -441,7 +505,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(76, '2017_08_28_030930690460_create_dishes_dishcategories_table', 10),
 	(77, '2017_08_28_030930943954_create_dishes_dishcategory_translations_table', 10),
 	(82, '2017_08_31_092158618860_create_mainpage_mainpages_table', 11),
-	(83, '2017_08_31_092158900541_create_mainpage_mainpage_translations_table', 11);
+	(83, '2017_08_31_092158900541_create_mainpage_mainpage_translations_table', 11),
+	(85, '2017_09_01_044303166285_create_feedbacks_feedback_table', 12);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Дамп структуры для таблица rero.news__categories
@@ -585,9 +650,9 @@ CREATE TABLE IF NOT EXISTS `persistences` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `persistences_code_unique` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы rero.persistences: ~31 rows (приблизительно)
+-- Дамп данных таблицы rero.persistences: ~37 rows (приблизительно)
 DELETE FROM `persistences`;
 /*!40000 ALTER TABLE `persistences` DISABLE KEYS */;
 INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`) VALUES
@@ -622,7 +687,17 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 	(29, 1, '7QrLY1ka1QFC3k88hzmGG3MQ2l3Ip410', '2017-08-26 07:32:03', '2017-08-26 07:32:03'),
 	(30, 1, 'vcCJgW0OHigskILV7F1Agrhr68bZKnrD', '2017-08-26 07:32:52', '2017-08-26 07:32:52'),
 	(31, 1, 'VB5Ke1PFQxHlSl3QfwUe6I3K0vuFvl5U', '2017-08-31 10:17:58', '2017-08-31 10:17:58'),
-	(32, 1, '52tL6aoCo3Ilr7qMEJCCc9qArp7FtAef', '2017-08-31 10:18:05', '2017-08-31 10:18:05');
+	(32, 1, '52tL6aoCo3Ilr7qMEJCCc9qArp7FtAef', '2017-08-31 10:18:05', '2017-08-31 10:18:05'),
+	(33, 1, 'z13TViY6b5YO6nzYa7fo55hZePmdIvhj', '2017-09-01 02:36:18', '2017-09-01 02:36:18'),
+	(34, 1, '03MVnE8IBh2SSqsZdYtrbChcNoui7iwf', '2017-09-01 02:36:24', '2017-09-01 02:36:24'),
+	(35, 1, 'h4bbJxfMkspPAzhvgGeRxaC6hxgyfSUw', '2017-09-01 02:36:31', '2017-09-01 02:36:31'),
+	(36, 1, 'R6acTeSd6RwzZX119X6P3nwHzpRaxe63', '2017-09-01 02:36:35', '2017-09-01 02:36:35'),
+	(37, 1, '3tSkOhKdGBbVPOuJU3ocSPX7NFfKKSR6', '2017-09-01 02:39:04', '2017-09-01 02:39:04'),
+	(38, 1, 'o68x3h3AfJ0WLO4mO6R3qXO11hwnNBLO', '2017-09-01 02:43:08', '2017-09-01 02:43:08'),
+	(39, 1, 'WBGcSsfhF0iyYmUqQad3R2LZ5lHgE0YO', '2017-09-01 02:44:01', '2017-09-01 02:44:01'),
+	(40, 1, 'qsPnS2WnWxEeEc9RVkgla0xSy2Y0Ym1b', '2017-09-01 02:44:06', '2017-09-01 02:44:06'),
+	(41, 1, 'mgUWq46c9GcsRvDRWc7Y9mh2K0n5dJAm', '2017-09-01 02:45:40', '2017-09-01 02:45:40'),
+	(42, 1, 'IBozVViak9V53UXtwmtbPqCknhrNcABp', '2017-09-01 09:56:07', '2017-09-01 09:56:07');
 /*!40000 ALTER TABLE `persistences` ENABLE KEYS */;
 
 -- Дамп структуры для таблица rero.reminders
@@ -657,9 +732,9 @@ CREATE TABLE IF NOT EXISTS `revisions` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `revisions_revisionable_id_revisionable_type_index` (`revisionable_id`,`revisionable_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=595 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=605 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы rero.revisions: ~585 rows (приблизительно)
+-- Дамп данных таблицы rero.revisions: ~583 rows (приблизительно)
 DELETE FROM `revisions`;
 /*!40000 ALTER TABLE `revisions` DISABLE KEYS */;
 INSERT INTO `revisions` (`id`, `revisionable_type`, `revisionable_id`, `user_id`, `key`, `old_value`, `new_value`, `created_at`, `updated_at`) VALUES
@@ -1256,7 +1331,17 @@ INSERT INTO `revisions` (`id`, `revisionable_type`, `revisionable_id`, `user_id`
 	(591, 'Modules\\Translation\\Entities\\TranslationTranslation', 584, 1, 'value', 'Тут вы можете добавлять новые блюда, десерты, напитки, не важно. Вон справа синяя кнопка - видите? Которое "Создать блюдо" - тык по ней. Если вы её боитесь - то вот, <a href="dishes/create/">пожалуйста</a> )', 'Тут вы можете добавлять новые блюда, десерты, напитки, не важно. Вон справа синяя кнопка - видите? Которое "Создать блюдо" - тык по ней. Если вы её боитесь - то вот, <a href="dishes/create/">тык</a> ', '2017-08-26 07:32:04', '2017-08-26 07:32:04'),
 	(592, 'Modules\\Translation\\Entities\\TranslationTranslation', 584, 1, 'value', 'Тут вы можете добавлять новые блюда, десерты, напитки, не важно. Вон справа синяя кнопка - видите? Которое "Создать блюдо" - тык по ней. Если вы её боитесь - то вот, <a href="dishes/create/">тык</a> ', 'Тут вы можете добавлять новые блюда, десерты, напитки, не важно. Вон справа синяя кнопка - видите? Которое "Создать блюдо" - тык по ней. Если вы её боитесь - то можно и сюда тыкнуть:  <a href="dishes/create/">тык</a> ', '2017-08-26 07:32:52', '2017-08-26 07:32:52'),
 	(593, 'Modules\\Translation\\Entities\\TranslationTranslation', 585, 1, 'created_at', NULL, NULL, '2017-08-31 10:17:58', '2017-08-31 10:17:58'),
-	(594, 'Modules\\Translation\\Entities\\TranslationTranslation', 586, 1, 'created_at', NULL, NULL, '2017-08-31 10:18:05', '2017-08-31 10:18:05');
+	(594, 'Modules\\Translation\\Entities\\TranslationTranslation', 586, 1, 'created_at', NULL, NULL, '2017-08-31 10:18:05', '2017-08-31 10:18:05'),
+	(595, 'Modules\\Translation\\Entities\\TranslationTranslation', 587, 1, 'created_at', NULL, NULL, '2017-09-01 02:36:18', '2017-09-01 02:36:18'),
+	(596, 'Modules\\Translation\\Entities\\TranslationTranslation', 588, 1, 'created_at', NULL, NULL, '2017-09-01 02:36:24', '2017-09-01 02:36:24'),
+	(597, 'Modules\\Translation\\Entities\\TranslationTranslation', 589, 1, 'created_at', NULL, NULL, '2017-09-01 02:36:31', '2017-09-01 02:36:31'),
+	(598, 'Modules\\Translation\\Entities\\TranslationTranslation', 590, 1, 'created_at', NULL, NULL, '2017-09-01 02:36:35', '2017-09-01 02:36:35'),
+	(599, 'Modules\\Translation\\Entities\\TranslationTranslation', 591, 1, 'created_at', NULL, NULL, '2017-09-01 02:39:04', '2017-09-01 02:39:04'),
+	(600, 'Modules\\Translation\\Entities\\TranslationTranslation', 592, 1, 'created_at', NULL, NULL, '2017-09-01 02:43:08', '2017-09-01 02:43:08'),
+	(601, 'Modules\\Translation\\Entities\\TranslationTranslation', 593, 1, 'created_at', NULL, NULL, '2017-09-01 02:44:01', '2017-09-01 02:44:01'),
+	(602, 'Modules\\Translation\\Entities\\TranslationTranslation', 594, 1, 'created_at', NULL, NULL, '2017-09-01 02:44:06', '2017-09-01 02:44:06'),
+	(603, 'Modules\\Translation\\Entities\\TranslationTranslation', 595, 1, 'created_at', NULL, NULL, '2017-09-01 02:45:40', '2017-09-01 02:45:40'),
+	(604, 'Modules\\Translation\\Entities\\TranslationTranslation', 596, 1, 'created_at', NULL, NULL, '2017-09-01 09:56:07', '2017-09-01 09:56:07');
 /*!40000 ALTER TABLE `revisions` ENABLE KEYS */;
 
 -- Дамп структуры для таблица rero.roles
@@ -1316,7 +1401,7 @@ DELETE FROM `setting__settings`;
 /*!40000 ALTER TABLE `setting__settings` DISABLE KEYS */;
 INSERT INTO `setting__settings` (`id`, `name`, `plainValue`, `isTranslatable`, `created_at`, `updated_at`) VALUES
 	(1, 'core::template', 'Flatly', 0, '2017-08-23 13:52:08', '2017-08-23 13:52:08'),
-	(2, 'core::locales', '["en","ru"]', 0, '2017-08-23 13:52:08', '2017-08-23 14:02:40'),
+	(2, 'core::locales', '["en","ru"]', 0, '2017-08-23 13:52:08', '2017-09-01 05:29:10'),
 	(3, 'core::site-name', NULL, 1, '2017-08-23 14:02:40', '2017-08-23 14:02:40'),
 	(4, 'core::site-name-mini', NULL, 1, '2017-08-23 14:02:40', '2017-08-23 14:02:40'),
 	(5, 'core::site-description', NULL, 1, '2017-08-23 14:02:40', '2017-08-23 14:02:40'),
@@ -1335,15 +1420,21 @@ CREATE TABLE IF NOT EXISTS `setting__setting_translations` (
   UNIQUE KEY `setting__setting_translations_setting_id_locale_unique` (`setting_id`,`locale`),
   KEY `setting__setting_translations_locale_index` (`locale`),
   CONSTRAINT `setting__setting_translations_setting_id_foreign` FOREIGN KEY (`setting_id`) REFERENCES `setting__settings` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы rero.setting__setting_translations: ~3 rows (приблизительно)
+-- Дамп данных таблицы rero.setting__setting_translations: ~8 rows (приблизительно)
 DELETE FROM `setting__setting_translations`;
 /*!40000 ALTER TABLE `setting__setting_translations` DISABLE KEYS */;
 INSERT INTO `setting__setting_translations` (`id`, `setting_id`, `locale`, `value`, `description`) VALUES
 	(1, 3, 'en', '', NULL),
 	(2, 4, 'en', '', NULL),
-	(3, 5, 'en', '', NULL);
+	(3, 5, 'en', '', NULL),
+	(4, 3, 'ru', '', NULL),
+	(5, 4, 'ru', '', NULL),
+	(6, 5, 'ru', '', NULL),
+	(7, 3, 'de', '', NULL),
+	(8, 4, 'de', '', NULL),
+	(9, 5, 'de', '', NULL);
 /*!40000 ALTER TABLE `setting__setting_translations` ENABLE KEYS */;
 
 -- Дамп структуры для таблица rero.tag__tagged
@@ -1424,7 +1515,7 @@ CREATE TABLE IF NOT EXISTS `translation__translations` (
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `translation__translations_key_index` (`key`)
-) ENGINE=InnoDB AUTO_INCREMENT=566 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=573 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Дамп данных таблицы rero.translation__translations: ~565 rows (приблизительно)
 DELETE FROM `translation__translations`;
@@ -1994,7 +2085,14 @@ INSERT INTO `translation__translations` (`id`, `key`, `created_at`, `updated_at`
 	(562, 'page::pages.facebook-types.product', '2017-08-26 07:15:46', '2017-08-26 07:15:46', NULL),
 	(563, 'page::pages.facebook-types.article', '2017-08-26 07:15:46', '2017-08-26 07:15:46', NULL),
 	(564, 'page::pages.navigation.back to index', '2017-08-26 07:15:46', '2017-08-26 07:15:46', NULL),
-	(565, 'dishes::dishes.dishes.you_can_add_dishes', '2017-08-26 07:15:46', '2017-08-26 07:15:46', NULL);
+	(565, 'dishes::dishes.dishes.you_can_add_dishes', '2017-08-26 07:15:46', '2017-08-26 07:15:46', NULL),
+	(566, 'mainpage::mainpages.strings_mainpage.email', '2017-09-01 02:36:18', '2017-09-01 02:36:18', NULL),
+	(567, 'mainpage::mainpages.strings_mainpage.message', '2017-09-01 02:36:24', '2017-09-01 02:36:24', NULL),
+	(568, 'mainpage::mainpages.strings_mainpage.name', '2017-09-01 02:36:31', '2017-09-01 02:36:31', NULL),
+	(569, 'mainpage::mainpages.strings_mainpage.send', '2017-09-01 02:36:35', '2017-09-01 02:36:35', NULL),
+	(570, 'mainpage::mainpages.strings_mainpage.see_button', '2017-09-01 02:39:04', '2017-09-01 02:39:04', NULL),
+	(571, 'core::core.tab.german', '2017-09-01 02:44:01', '2017-09-01 02:44:01', NULL),
+	(572, 'mainpage::mainpages.strings_mainpage.valute', '2017-09-01 09:56:07', '2017-09-01 09:56:07', NULL);
 /*!40000 ALTER TABLE `translation__translations` ENABLE KEYS */;
 
 -- Дамп структуры для таблица rero.translation__translation_translations
@@ -2008,9 +2106,9 @@ CREATE TABLE IF NOT EXISTS `translation__translation_translations` (
   UNIQUE KEY `translations_trans_id_locale_unique` (`translation_id`,`locale`),
   KEY `translation__translation_translations_locale_index` (`locale`),
   CONSTRAINT `translation__translation_translations_translation_id_foreign` FOREIGN KEY (`translation_id`) REFERENCES `translation__translations` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=587 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=597 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы rero.translation__translation_translations: ~585 rows (приблизительно)
+-- Дамп данных таблицы rero.translation__translation_translations: ~583 rows (приблизительно)
 DELETE FROM `translation__translation_translations`;
 /*!40000 ALTER TABLE `translation__translation_translations` DISABLE KEYS */;
 INSERT INTO `translation__translation_translations` (`id`, `value`, `translation_id`, `locale`) VALUES
@@ -2599,7 +2697,17 @@ INSERT INTO `translation__translation_translations` (`id`, `value`, `translation
 	(583, 'Here you can add new dishes, desserts, drinks, it does not matter.', 565, 'en'),
 	(584, 'Тут вы можете добавлять новые блюда, десерты, напитки, не важно. Вон справа синяя кнопка - видите? Которое "Создать блюдо" - тык по ней. Если вы её боитесь - то можно и сюда тыкнуть:  <a href="dishes/create/">тык</a> ', 565, 'ru'),
 	(585, 'Медиа файлы', 327, 'ru'),
-	(586, 'Медиа файлы', 325, 'ru');
+	(586, 'Медиа файлы', 325, 'ru'),
+	(587, 'E-mail', 566, 'en'),
+	(588, 'Your message', 567, 'en'),
+	(589, 'Name', 568, 'en'),
+	(590, 'Send', 569, 'en'),
+	(591, 'See more', 570, 'en'),
+	(592, 'Posmotretken', 570, 'de'),
+	(593, 'Немецкий', 571, 'ru'),
+	(594, 'German', 571, 'en'),
+	(595, 'Vashe soobshenie ahtung', 567, 'de'),
+	(596, 'rub', 572, 'en');
 /*!40000 ALTER TABLE `translation__translation_translations` ENABLE KEYS */;
 
 -- Дамп структуры для таблица rero.users
@@ -2622,7 +2730,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `email`, `password`, `permissions`, `last_login`, `first_name`, `last_name`, `created_at`, `updated_at`) VALUES
-	(1, 'rinzler91@mail.ru', '$2y$10$4JHbahNDiPg1NDgHmCYA4eRCyAU/Bd436Rlbkv6xx9OWRHb7GU.XW', '{"core.sidebar.group":true,"dashboard.index":true,"dashboard.update":true,"dashboard.reset":true,"dishes.dishes.index":true,"dishes.dishes.create":true,"dishes.dishes.edit":true,"dishes.dishes.destroy":true,"dishes.dishcategories.index":true,"dishes.dishcategories.create":true,"dishes.dishcategories.edit":true,"dishes.dishcategories.destroy":true,"mainpage.mainpages.index":true,"mainpage.mainpages.create":true,"mainpage.mainpages.edit":true,"mainpage.mainpages.destroy":true,"media.medias.index":true,"media.medias.create":true,"media.medias.edit":true,"media.medias.destroy":true,"menu.menus.index":true,"menu.menus.create":true,"menu.menus.edit":true,"menu.menus.destroy":true,"menu.menuitems.index":true,"menu.menuitems.create":true,"menu.menuitems.edit":true,"menu.menuitems.destroy":true,"news.news.index":true,"news.news.create":true,"news.news.edit":true,"news.news.destroy":true,"news.categories.index":true,"news.categories.create":true,"news.categories.edit":true,"news.categories.destroy":true,"page.pages.index":true,"page.pages.create":true,"page.pages.edit":true,"page.pages.destroy":true,"setting.settings.index":true,"setting.settings.edit":true,"tag.tags.index":true,"tag.tags.create":true,"tag.tags.edit":true,"tag.tags.destroy":true,"translation.translations.index":true,"translation.translations.edit":true,"translation.translations.import":true,"translation.translations.export":true,"user.users.index":true,"user.users.create":true,"user.users.edit":true,"user.users.destroy":true,"user.roles.index":true,"user.roles.create":true,"user.roles.edit":true,"user.roles.destroy":true,"account.api-keys.index":true,"account.api-keys.create":true,"account.api-keys.destroy":true,"workshop.sidebar.group":true,"workshop.modules.index":true,"workshop.modules.show":true,"workshop.modules.update":true,"workshop.modules.disable":true,"workshop.modules.enable":true,"workshop.modules.publish":true,"workshop.themes.index":true,"workshop.themes.show":true,"workshop.themes.publish":true}', '2017-08-31 10:18:05', 'Devid', 'Wang', '2017-08-23 13:51:55', '2017-08-31 10:46:54');
+	(1, 'rinzler91@mail.ru', '$2y$10$4JHbahNDiPg1NDgHmCYA4eRCyAU/Bd436Rlbkv6xx9OWRHb7GU.XW', '{"core.sidebar.group":true,"dashboard.index":true,"dashboard.update":true,"dashboard.reset":true,"dishes.dishes.index":true,"dishes.dishes.create":true,"dishes.dishes.edit":true,"dishes.dishes.destroy":true,"dishes.dishcategories.index":true,"dishes.dishcategories.create":true,"dishes.dishcategories.edit":true,"dishes.dishcategories.destroy":true,"feedbacks.feedback.index":true,"feedbacks.feedback.create":true,"feedbacks.feedback.edit":true,"feedbacks.feedback.destroy":true,"mainpage.mainpages.index":true,"mainpage.mainpages.create":true,"mainpage.mainpages.edit":true,"mainpage.mainpages.destroy":true,"media.medias.index":true,"media.medias.create":true,"media.medias.edit":true,"media.medias.destroy":true,"menu.menus.index":true,"menu.menus.create":true,"menu.menus.edit":true,"menu.menus.destroy":true,"menu.menuitems.index":true,"menu.menuitems.create":true,"menu.menuitems.edit":true,"menu.menuitems.destroy":true,"news.news.index":true,"news.news.create":true,"news.news.edit":true,"news.news.destroy":true,"news.categories.index":true,"news.categories.create":true,"news.categories.edit":true,"news.categories.destroy":true,"page.pages.index":true,"page.pages.create":true,"page.pages.edit":true,"page.pages.destroy":true,"setting.settings.index":true,"setting.settings.edit":true,"tag.tags.index":true,"tag.tags.create":true,"tag.tags.edit":true,"tag.tags.destroy":true,"translation.translations.index":true,"translation.translations.edit":true,"translation.translations.import":true,"translation.translations.export":true,"user.users.index":true,"user.users.create":true,"user.users.edit":true,"user.users.destroy":true,"user.roles.index":true,"user.roles.create":true,"user.roles.edit":true,"user.roles.destroy":true,"account.api-keys.index":true,"account.api-keys.create":true,"account.api-keys.destroy":true,"workshop.sidebar.group":true,"workshop.modules.index":true,"workshop.modules.show":true,"workshop.modules.update":true,"workshop.modules.disable":true,"workshop.modules.enable":true,"workshop.modules.publish":true,"workshop.themes.index":true,"workshop.themes.show":true,"workshop.themes.publish":true}', '2017-09-01 09:56:07', 'Devid', 'Wang', '2017-08-23 13:51:55', '2017-09-01 09:56:07');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Дамп структуры для таблица rero.user_tokens

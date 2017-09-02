@@ -1,7 +1,7 @@
 <div class="footer">
     <div class="container">
         <p class="footer__copyright">
-            ©  2017. Cafe Rero. All Rights Reservered.
+            {{ $mainpage->first()->copyrights }}
         </p>
     </div>
 </div>

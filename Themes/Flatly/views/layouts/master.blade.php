@@ -23,9 +23,13 @@
 <body>
 
 <div class="wrapper">
+
+    @include('partials.home-notifications')
+
 @include('partials.header')
 
     @yield('content')
+
 
 @include('partials.footer')
 

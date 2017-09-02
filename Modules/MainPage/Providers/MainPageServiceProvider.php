@@ -7,6 +7,8 @@ use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\MainPage\Events\Handlers\RegisterMainPageSidebar;
 
+use Modules\Media\Image\ThumbnailManager;
+
 class MainPageServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
@@ -33,6 +35,8 @@ class MainPageServiceProvider extends ServiceProvider
         $this->publishConfig('mainpage', 'permissions');
 
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+
+        $this->registerThumbnails();
     }
 
     /**
@@ -61,5 +65,18 @@ class MainPageServiceProvider extends ServiceProvider
         );
 // add bindings
 
+    }
+
+    private function registerThumbnails()
+    {
+        $this->app[ThumbnailManager::class]->registerThumbnail('MainGallery', [
+            'fit' => [
+                'width' => '200',
+                'height' => '200',
+                'callback' => function ($constraint) {
+                    $constraint->upsize();
+                },
+            ],
+        ]);
     }
 }

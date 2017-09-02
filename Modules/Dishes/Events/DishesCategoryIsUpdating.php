@@ -8,17 +8,17 @@ use Modules\Core\Events\AbstractEntityHook;
 
 class DishesCategoryIsUpdating extends AbstractEntityHook implements EntityIsChanging
 {
-    private $_category;
+    private $dish_category;
 
-    public function __construct(DishCategory $_category, array $data)
+    public function __construct(DishCategory $dish_category, array $data)
     {
         parent::__construct($data);
 
-        $this->_category = $_category;
+        $this->dish_category = $dish_category;
     }
 
     public function getDishes()
     {
-        return $this->_category;
+        return $this->dish_category;
     }
 }

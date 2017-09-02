@@ -40,6 +40,7 @@ section{
 .section-title{
   margin:0;
   color: $red;
+  margin-bottom: 30px;
 }
 .title-addition{
   text-align:center;
@@ -56,12 +57,16 @@ textarea{
 
 
 body{
+  padding-right: 0 !important;
   margin: 0;
-  background:url(http://www.1zoom.net/big2/44/229358-svetik.jpg);
+  background-image:url(http://www.1zoom.net/big2/44/229358-svetik.jpg);
   background-attachment: fixed;
   background-size:110% auto;
-  background-position: center right;
+  background-position: top center;
+  transition: all 1s;
 }
+
+
 a{
   color:#fff;
   text-decoration:none;
@@ -74,6 +79,7 @@ a{
   border-radius:3px;
   transition: all 0.5s;
   padding:10px 25px;
+  border:none;
   &.button-white{
     color:#000;
     background:#fff;
@@ -90,4 +96,9 @@ a{
       background: $darkblue;
     }
   }
+}
+
+.link-center{
+  margin-top: 35px;
+  text-align: center;
 }

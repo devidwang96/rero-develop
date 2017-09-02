@@ -27,11 +27,13 @@ class CreateMainPageMainpageTranslationsTable extends Migration
             $table->string('show_menu_string');
             $table->string('our_menu_string');
             $table->string('our_menu_addition_string');
+            $table->string('show_full_menu_string');
             $table->string('gallery_title');
             $table->string('leave_feedback_title');
             $table->string('leave_feedback_addition');
 
             $table->text('copyrights');
+            $table->string('addition_content_title');
             $table->text('addition_content');
 
 

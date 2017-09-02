@@ -9,13 +9,13 @@ use Modules\MainPage\Events\MainPageWasUpdated;
 
 class EloquentMainpageRepository extends EloquentBaseRepository implements MainpageRepository
 {
-    public function update($dish_category, $data)
+    public function update($mainpage, $data)
     {
         //event($event = new MainPageIsUp($dish, $data));
-        $dish_category->update($data);
+        $mainpage->update($data);
 
-        event(new MainPageWasUpdated($dish_category, $data));
+        event(new MainPageWasUpdated($mainpage, $data));
 
-        return $dish_category;
+        return $mainpage;
     }
 }
