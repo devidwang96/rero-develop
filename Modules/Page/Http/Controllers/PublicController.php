@@ -4,9 +4,18 @@ namespace Modules\Page\Http\Controllers;
 
 use Illuminate\Contracts\Foundation\Application;
 use Modules\Core\Http\Controllers\BasePublicController;
+use Modules\Feedbacks\Events\FeedbackIsCreating;
 use Modules\Menu\Repositories\MenuItemRepository;
 use Modules\Page\Entities\Page;
 use Modules\Page\Repositories\PageRepository;
+
+use Modules\Media\Repositories\FileRepository;
+
+use Modules\Dishes\Entities\Dish;
+use Modules\Dishes\Entities\DishCategory;
+
+use Modules\MainPage\Entities\Mainpage;
+use Modules\Feedbacks\Entities\Feedback;
 
 class PublicController extends BasePublicController
 {
@@ -44,15 +53,25 @@ class PublicController extends BasePublicController
     /**
      * @return \Illuminate\View\View
      */
-    public function homepage()
+    public function homepage(FileRepository $files)
     {
+        $dishes = Dish::all()
+            ->where('status', '=',1)
+            ->where('on_main', '=', 1);
+
+        $categories = DishCategory::all();
+
+        $mainpage = Mainpage::all();
+
+        $feedbacks = Feedback::all()->where('status', '=', 1);
+
         $page = $this->page->findHomepage();
 
         $this->throw404IfNotFound($page);
 
         $template = $this->getTemplateForPage($page);
 
-        return view($template, compact('page'));
+        return view($template, compact('page', 'dishes', 'files', 'categories', 'mainpage', 'feedbacks'));
     }
 
     /**

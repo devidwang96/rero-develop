@@ -71,9 +71,6 @@
 
 
 
-
-
-
     </div>
     {!! Form::close() !!}
 @stop

@@ -1,7 +1,7 @@
-<footer class="container">
-    <div class="row">
-        <div class="col-md-12">
-            footer
-        </div>
+<div class="footer">
+    <div class="container">
+        <p class="footer__copyright">
+            {{ $mainpage->first()->copyrights }}
+        </p>
     </div>
-</footer>
+</div>

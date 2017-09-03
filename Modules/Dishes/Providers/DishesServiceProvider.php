@@ -7,6 +7,8 @@ use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Dishes\Events\Handlers\RegisterDishesSidebar;
 
+use Modules\Media\Image\ThumbnailManager;
+
 class DishesServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
@@ -33,6 +35,8 @@ class DishesServiceProvider extends ServiceProvider
         $this->publishConfig('dishes', 'permissions');
 
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+
+        $this->registerThumbnails();
     }
 
     /**
@@ -75,4 +79,29 @@ class DishesServiceProvider extends ServiceProvider
 
 
     }
+
+    private function registerThumbnails()
+    {
+        $this->app[ThumbnailManager::class]->registerThumbnail('DishesOnMainThumb', [
+            'fit' => [
+                'width' => '250',
+                'height' => '250',
+                'callback' => function ($constraint) {
+                    $constraint->upsize();
+                },
+            ],
+        ]);
+
+        $this->app[ThumbnailManager::class]->registerThumbnail('DishesCategoryOnMainThumb', [
+            'fit' => [
+                'width' => '300',
+                'height' => '250',
+                'callback' => function ($constraint) {
+                    $constraint->upsize();
+                },
+            ],
+        ]);
+    }
+
+
 }
