@@ -58,5 +58,4 @@ class EloquentDishRepository extends EloquentBaseRepository implements DishRepos
 
         return $model->delete();
     }
-
 }

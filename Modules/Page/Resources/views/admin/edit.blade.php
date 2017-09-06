@@ -69,6 +69,7 @@
                         </label>
                     </div>
                     <hr/>
+
                     <div class='form-group{{ $errors->has("template") ? ' has-error' : '' }}'>
                         {!! Form::label("template", trans('page::pages.form.template')) !!}
                         {!! Form::select("template", $all_templates, old("template", $page->template), ['class' => "form-control", 'placeholder' => trans('page::pages.form.template')]) !!}

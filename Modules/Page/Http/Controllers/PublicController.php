@@ -65,13 +65,50 @@ class PublicController extends BasePublicController
 
         $feedbacks = Feedback::all()->where('status', '=', 1);
 
-        $page = $this->page->findHomepage();
+        return view('home', compact('dishes', 'files', 'categories', 'mainpage', 'feedbacks'));
+    }
 
-        $this->throw404IfNotFound($page);
+    public function news(FileRepository $files)
+    {
 
-        $template = $this->getTemplateForPage($page);
 
-        return view($template, compact('page', 'dishes', 'files', 'categories', 'mainpage', 'feedbacks'));
+        return view('news');
+    }
+    public function newsInner(FileRepository $files)
+    {
+
+
+        return view('news-inner');
+    }
+    public function gallery(FileRepository $files)
+    {
+
+
+        return view('gallery');
+    }
+    public function events(FileRepository $files)
+    {
+
+
+        return view('events');
+    }
+    public function eventsInner(FileRepository $files)
+    {
+
+
+        return view('events-inner');
+    }
+    public function collective(FileRepository $files)
+    {
+
+
+        return view('collective');
+    }
+    public function menu(FileRepository $files)
+    {
+
+
+        return view('menu');
     }
 
     /**

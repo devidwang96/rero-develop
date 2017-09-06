@@ -37,23 +37,13 @@ class RegisterFeedbacksSidebar implements \Maatwebsite\Sidebar\SidebarExtender
     public function extendWith(Menu $menu)
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
-            $group->item(trans('feedbacks::feedbacks.title.feedbacks'), function (Item $item) {
+            $group->item(trans('feedbacks::feedback.title.feedback'), function (Item $item) {
                 $item->icon('fa fa-copy');
                 $item->weight(10);
+                $item->route('admin.feedbacks.feedback.index');
                 $item->authorize(
-                     /* append */
+                    $this->auth->hasAccess('feedbacks.feedback.index')
                 );
-                $item->item(trans('feedbacks::feedback.title.feedback'), function (Item $item) {
-                    $item->icon('fa fa-copy');
-                    $item->weight(0);
-                    $item->append('admin.feedbacks.feedback.create');
-                    $item->route('admin.feedbacks.feedback.index');
-                    $item->authorize(
-                        $this->auth->hasAccess('feedbacks.feedback.index')
-                    );
-                });
-// append
-
             });
         });
 

@@ -22,7 +22,7 @@ class MenuPresenter extends Presenter
      */
     public function getOpenTagWrapper()
     {
-        return PHP_EOL . '<ul class="nav navbar-nav">' . PHP_EOL;
+        return PHP_EOL . '<ul class="header__navigation-menu">' . PHP_EOL;
     }
 
     /**

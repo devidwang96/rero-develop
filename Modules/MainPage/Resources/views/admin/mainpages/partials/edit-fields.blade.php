@@ -1,5 +1,32 @@
 <div class="box-body">
     <div class="row">
+        <div class="col-xs-12">
+            <div class='form-group{{ $errors->has("$lang.title") ? ' has-error' : '' }}'>
+                <?php $old_title = isset($mainpage->translate($lang)->title) ? $mainpage->translate($lang)->title : ''; ?>
+                {!! Form::label("{$lang}[title]", trans('mainpage::mainpage.form.title')) !!}
+                {!! Form::text("{$lang}[title]", old("$lang.[title]", $old_title), ['class' => 'form-control', 'placeholder' => trans('mainpage::mainpage.form.title')]) !!}
+                {!! $errors->first("$lang.title", '<span class="help-block">:message</span>') !!}
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <div class='form-group{{ $errors->has("$lang.meta_keywords") ? ' has-error' : '' }}'>
+                <?php $old_meta_keywords = isset($mainpage->translate($lang)->meta_keywords) ? $mainpage->translate($lang)->meta_keywords : ''; ?>
+                {!! Form::label("{$lang}[meta_keywords]", trans('mainpage::mainpage.form.meta_keywords')) !!}
+                {!! Form::text("{$lang}[meta_keywords]", old("$lang.[meta_keywords]", $old_meta_keywords), ['class' => 'form-control', 'placeholder' => trans('mainpage::mainpage.form.meta_keywords')]) !!}
+                {!! $errors->first("$lang.meta_keywords", '<span class="help-block">:message</span>') !!}
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <div class='form-group{{ $errors->has("$lang.meta_description") ? ' has-error' : '' }}'>
+                <?php $old_meta_description = isset($mainpage->translate($lang)->meta_description) ? $mainpage->translate($lang)->meta_description : ''; ?>
+                {!! Form::label("{$lang}[meta_description]", trans('mainpage::mainpage.form.meta_description')) !!}
+                {!! Form::text("{$lang}[meta_description]", old("$lang.[meta_description]", $old_meta_description), ['class' => 'form-control', 'placeholder' => trans('mainpage::mainpage.form.meta_description')]) !!}
+                {!! $errors->first("$lang.meta_description", '<span class="help-block">:message</span>') !!}
+            </div>
+        </div>
+
         <div class="col-lg-4 col-md-6 col-sm-12">
             <div class='form-group{{ $errors->has("$lang.slogan_string") ? ' has-error' : '' }}'>
                 <?php $old_slogan_string = isset($mainpage->translate($lang)->slogan_string) ? $mainpage->translate($lang)->slogan_string : ''; ?>

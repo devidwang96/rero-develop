@@ -8,6 +8,9 @@ class MainpageTranslation extends Model
 {
     public $timestamps = false;
     protected $fillable = [
+        'title',
+        'meta_keywords',
+        'meta_description',
         'slogan_string',
         'welcome_string',
         'show_menu_string',

@@ -162,6 +162,11 @@ a {
   margin-top: 35px;
   text-align: center; }
 
+.page-default {
+  color: #fff; }
+  .page-default section.page__content {
+    margin-top: 0; }
+
 .page-home {
   color: #fff; }
   .page-home .page__intro {

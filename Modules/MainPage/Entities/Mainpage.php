@@ -13,6 +13,9 @@ class Mainpage extends Model
 
     protected $table = 'mainpage__mainpages';
     public $translatedAttributes = [
+        'title',
+        'meta_keywords',
+        'meta_description',
         'slogan_string',
         'welcome_string',
         'show_menu_string',
@@ -27,6 +30,9 @@ class Mainpage extends Model
         'addition_content_title',
     ];
     protected $fillable = [
+        'title',
+        'meta_keywords',
+        'meta_description',
         'slogan_string',
         'welcome_string',
         'show_menu_string',

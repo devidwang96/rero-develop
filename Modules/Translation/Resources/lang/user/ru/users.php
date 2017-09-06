@@ -45,4 +45,8 @@ return [
     'new password setup' => 'Создать новый пароль',
     'or send reset password mail' => 'или отправить письмо о сбросе пароля на электронную почту',
     'send reset password email' => 'отправить письмо о сбросе пароля на электронную почту',
+
+    'footer' => [
+        'copyrights', 'Копирайты'
+    ]
 ];

@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-    {{ $page->title }} @parent
+    {{ $mainpage->first()->title }} @parent
 @stop
 
 @section('meta')
-    <meta name="title" content="{{ $page->meta_title}}" />
-    <meta name="description" content="{{ $page->meta_description }}" />
+    <meta name="title" content="{{ $mainpage->first()->meta_title}}" />
+    <meta name="description" content="{{ $mainpage->first()->meta_description }}" />
 @stop
 
 @section('additions')
@@ -96,7 +96,7 @@
                     <a href="/dishes/{{$dish->id}}" class="dish">
                         <div class="dish__preview">
                             <?php
-                            $dish_img = $files->findFileByZoneForEntity('DishesGallery', $dish)->path;
+                                $dish_img = $files->findFileByZoneForEntity('Dishes', $dish)->path;
                             ?>
                             <img src="{{ Imagy::getThumbnail($dish_img, 'DishesOnMainThumb') }}">
                         </div>
@@ -197,8 +197,8 @@
 
                     </div>
                     <button type="submit" class="button button-red">{{ trans('mainpage::mainpages.strings_mainpage.send') }}</button>
-
                 </div>
+                {!! Form::close() !!}
             </div>
 
             <div class="container feedbacks">
@@ -220,8 +220,6 @@
             <p class="link-center"><a href="#" class="button button-red">Сделать заказ!</a></p>
 
         </section>
-
-
 
     </div>
 

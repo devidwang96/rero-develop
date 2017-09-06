@@ -22,6 +22,11 @@ class CreateMainPageMainpageTranslationsTable extends Migration
 
             $table->unique(['mainpage_id', 'locale']);
 
+            $table->string('title');
+            $table->string('meta_keywords');
+            $table->string('meta_description');
+
+
             $table->string('slogan_string');
             $table->string('welcome_string');
             $table->string('show_menu_string');

@@ -9,6 +9,41 @@ if (! App::runningInConsole()) {
         'as' => 'homepage',
         'middleware' => config('asgard.page.config.middleware'),
     ]);
+    $router->get('/menu', [
+        'uses' => 'PublicController@menu',
+        'as' => 'menu',
+        'middleware' => config('asgard.page.config.middleware'),
+    ]);
+    $router->get('/news', [
+        'uses' => 'PublicController@news',
+        'as' => 'news',
+        'middleware' => config('asgard.page.config.middleware'),
+    ]);
+    $router->get('/news/{id}', [
+        'uses' => 'PublicController@newsInner',
+        'as' => 'news-inner',
+        'middleware' => config('asgard.page.config.middleware'),
+    ]);
+    $router->get('/gallery', [
+        'uses' => 'PublicController@gallery',
+        'as' => 'gallery',
+        'middleware' => config('asgard.page.config.middleware'),
+    ]);
+    $router->get('/collective', [
+        'uses' => 'PublicController@collective',
+        'as' => 'collective',
+        'middleware' => config('asgard.page.config.middleware'),
+    ]);
+    $router->get('/events', [
+        'uses' => 'PublicController@events',
+        'as' => 'events',
+        'middleware' => config('asgard.page.config.middleware'),
+    ]);
+    $router->get('/events/{id}', [
+        'uses' => 'PublicController@eventsInner',
+        'as' => 'events-inner',
+        'middleware' => config('asgard.page.config.middleware'),
+    ]);
     $router->any('{uri}', [
         'uses' => 'PublicController@uri',
         'as' => 'page',

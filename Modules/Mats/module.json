@@ -1,0 +1,17 @@
+{
+    "name": "Mats",
+    "alias": "mats",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 1,
+    "providers": [
+        "Modules\\Mats\\Providers\\MatsServiceProvider",
+        "Modules\\Mats\\Providers\\RouteServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        
+    ],
+    "requires": []
+}
