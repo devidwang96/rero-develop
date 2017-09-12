@@ -5,7 +5,7 @@
         {{ trans('orders::orders.title.create order') }}
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
+        <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('orders::orders.breadcrumb.home') }}</a></li>
         <li><a href="{{ route('admin.orders.order.index') }}">{{ trans('orders::orders.title.orders') }}</a></li>
         <li class="active">{{ trans('orders::orders.title.create order') }}</li>
     </ol>
@@ -37,7 +37,7 @@
 @section('shortcuts')
     <dl class="dl-horizontal">
         <dt><code>b</code></dt>
-        <dd>{{ trans('core::core.back to index') }}</dd>
+        <dd>{{ trans('orders::orders.back to index') }}</dd>
     </dl>
 @stop
 

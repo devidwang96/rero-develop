@@ -1,0 +1,17 @@
+{
+    "name": "PageSets",
+    "alias": "pagesets",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 1,
+    "providers": [
+        "Modules\\PageSets\\Providers\\PageSetsServiceProvider",
+        "Modules\\PageSets\\Providers\\RouteServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        
+    ],
+    "requires": []
+}

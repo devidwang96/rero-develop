@@ -38,13 +38,13 @@ class RegisterDishesSidebar implements \Maatwebsite\Sidebar\SidebarExtender
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('dishes::dishes.title.dishes'), function (Item $item) {
-                $item->icon('fa fa-copy');
+                $item->icon('fa fa-cutlery');
                 $item->weight(10);
                 $item->authorize(
                      /* append */
                 );
                 $item->item(trans('dishes::dishes.title.dishes'), function (Item $item) {
-                    $item->icon('fa fa-copy');
+                    $item->icon('fa fa-cutlery');
                     $item->weight(0);
                     $item->append('admin.dishes.dish.create');
                     $item->route('admin.dishes.dish.index');
@@ -53,7 +53,7 @@ class RegisterDishesSidebar implements \Maatwebsite\Sidebar\SidebarExtender
                     );
                 });
                 $item->item(trans('dishes::dishcategories.title.dishcategories'), function (Item $item) {
-                    $item->icon('fa fa-copy');
+                    $item->icon('fa fa-cutlery');
                     $item->weight(0);
                     $item->append('admin.dishes.dishcategory.create');
                     $item->route('admin.dishes.dishcategory.index');

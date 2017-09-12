@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class MatCategoryTranslation extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['title', 'teaser', 'status', 'mat_category_id'];
+    protected $fillable = ['title', 'teaser', 'status', 'mat_category_id', 'category_type'];
     protected $table = 'mats__matcategory_translations';
 }

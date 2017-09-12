@@ -29,9 +29,7 @@
                         {!! $errors->first("email", '<span class="help-block">:message</span>') !!}
                     </div>
 
-                    @editor('message', trans('dishes::dishes.form.message'), old("message"))
-
-
+                    @editor('message', trans('feedbacks::feedback.form.message'), old("message"))
 
                     <div class="checkbox">
                         <label for="status">
@@ -55,8 +53,7 @@
             <div class="box box-primary">
                 <div class="box-body">
                     {{ trans('feedbacks::feedback.messages.upload_image') }}
-                    {{--@mediaSingle('Feedback')--}}
-                    Загрузка изображений в разработке
+                    @mediaSingle('Feedback')
                 </div>
 
             </div>

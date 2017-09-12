@@ -31,7 +31,7 @@ class CreateDishRequest extends BaseFormRequest
     public function translationMessages()
     {
         return [
-            'title' =>trans('dishes::messages.title is required'),
+            'title.required' => trans('dishes::dishes.messages.title is required'),
         ];
     }
 }

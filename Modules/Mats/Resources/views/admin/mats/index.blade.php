@@ -31,7 +31,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>{{ trans('mats::mats.table.title') }}</th>
-                                <th>{{ trans('mats::mats.table.short_contain') }}</th>
+                                <th>{{ trans('mats::mats.table.teaser') }}</th>
                                 <th>{{ trans('mats::mats.table.category_title') }}</th>
                                 <th>{{ trans('core::core.table.created at') }}</th>
                                 <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
@@ -56,13 +56,19 @@
                                 </td>
                                 <td>
                                     <a href="{{ route('admin.mats.mat.edit', [$mat->id]) }}">
-                                        {{ $mat->short_contain }}
+                                        {{ $mat->teaser }}
                                     </a>
                                 </td>
 
                                 <td>
                                     <a href="{{ route('admin.mats.mat.edit', [$mat->id]) }}">
-                                        {{  $categories->where('id', $mat->category_id)->first()->title }}
+                                        <?
+                                            if($mat->category_id != 0){
+                                                echo $categories->find($mat->category_id)->title;
+                                            } else {
+                                                echo trans('mats::mats.table.no_category');
+                                            }
+                                        ?>
                                     </a>
                                 </td>
                                 <td>
@@ -88,7 +94,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>{{ trans('mats::mats.table.title') }}</th>
-                                <th>{{ trans('mats::mats.table.short_contain') }}</th>
+                                <th>{{ trans('mats::mats.table.teaser') }}</th>
                                 <th>{{ trans('mats::mats.table.category_title') }}</th>
                                 <th>{{ trans('core::core.table.created at') }}</th>
                                 <th>{{ trans('core::core.table.actions') }}</th>

@@ -32,7 +32,7 @@
                     </div>
 
                         <?php $old_message = isset($feedback->message) ? $feedback->message : ''; ?>
-                    @editor('message', trans('dishes::dishes.form.message'), old("message", $old_message))
+                    @editor('message', trans('feedbacks::feedback.form.message'), old("message", $old_message))
 
 
                         <?php $old_status = $feedback->status ?>
@@ -58,8 +58,10 @@
             <div class="box box-primary">
                 <div class="box-body">
                     {{ trans('feedbacks::feedback.messages.upload_image') }}
-                    {{--@mediaSingle('Feedback')--}}
-                    Загрузка изображений в разработке
+                    @mediaSingle('Feedback')
+
+
+                    {{--<input type="file" name="medias_single[Feedback]">--}}
                 </div>
 
             </div>

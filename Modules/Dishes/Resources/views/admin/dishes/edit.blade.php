@@ -62,13 +62,13 @@
                 </select>
             </div>
             <div class="box box-primary">
-                {{ trans('dishes::dishes.messages.dishes_image_help') }}
+                <p>{{ trans('dishes::dishes.messages.dishes_image_help') }}</p>
                 <div class="box-body">
                     @mediaSingle('Dishes', $dish)
                 </div>
             </div>
             <div class="box box-primary">
-                {{ trans('dishes::dishes.messages.dishes_gallery_help') }}
+                <p>{{ trans('dishes::dishes.messages.dishes_gallery_help') }}</p>
                 <div class="box-body">
                     @mediaMultiple('DishesGallery', $dish)
                 </div>

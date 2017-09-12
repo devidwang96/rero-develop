@@ -34,7 +34,7 @@
     .header .header__navigation ul.header__navigation-menu > li a {
       color: #fff;
       text-decoration: none;
-      padding: 18px 30px;
+      padding: 18px 20px;
       transition: all 0.5s;
       display: block;
       width: 100%; }
@@ -240,8 +240,9 @@ a {
       margin-top: 50px; }
       .page-home .page-home__dishes-catalog .dishes-catalog__catalog-dishes > .dish {
         display: inline-block;
+        vertical-align: top;
         width: 250px;
-        height: 330px;
+        min-height: 400px;
         background-color: #fff;
         color: #000;
         margin: 15px 5px 0;
@@ -312,7 +313,8 @@ a {
       .page-home .page-home__about .modal img {
         max-width: 100%; }
   .page-home .home-page__addition-content {
-    background: rgba(251, 192, 148, 0.95); }
+    background: rgba(255, 255, 255, 0.9);
+    color: #000; }
     .page-home .home-page__addition-content img {
       margin: 5px;
       padding: 10px;

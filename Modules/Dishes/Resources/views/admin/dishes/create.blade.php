@@ -14,8 +14,6 @@
 @section('content')
     {!! Form::open(['route' => ['admin.dishes.dish.store'], 'method' => 'post']) !!}
     <div class="row">
-
-
         <div class="col-md-9">
             <div class="box box-primary">
                 <div class="box-header">
@@ -59,13 +57,13 @@
                 </select>
             </div>
             <div class="box box-primary">
-                {{ trans('dishes::dishes.messages.dishes_image_help') }}
+                <p>{{ trans('dishes::dishes.messages.dishes_image_help') }}</p>
                 <div class="box-body">
                     @mediaSingle('Dishes')
                 </div>
             </div>
             <div class="box box-primary">
-                {{ trans('dishes::dishes.messages.dishes_gallery_help') }}
+                <p>{{ trans('dishes::dishes.messages.dishes_gallery_help') }}</p>
                 <div class="box-body">
                     @mediaMultiple('DishesGallery')
                 </div>

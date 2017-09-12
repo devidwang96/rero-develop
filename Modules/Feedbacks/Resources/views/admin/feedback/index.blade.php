@@ -29,10 +29,10 @@
                         <table class="data-table table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>{{ trans('core::core.table.id') }}</th>
-                                <th>{{ trans('core::core.table.photo') }}</th>
-                                <th>{{ trans('core::core.table.name') }}</th>
-                                <th>{{ trans('core::core.table.message') }}</th>
+                                <th>Id</th>
+                                <th>{{ trans('feedbacks::feedback.table.photo') }}</th>
+                                <th>{{ trans('feedbacks::feedback.table.name') }}</th>
+                                <th>{{ trans('feedbacks::feedback.table.message') }}</th>
                                 <th>{{ trans('core::core.table.created at') }}</th>
                                 <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
                             </tr>
@@ -78,10 +78,10 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th>{{ trans('core::core.table.id') }}</th>
-                                <th>{{ trans('core::core.table.photo') }}</th>
-                                <th>{{ trans('core::core.table.name') }}</th>
-                                <th>{{ trans('core::core.table.message') }}</th>
+                                <th>Id</th>
+                                <th>{{ trans('feedbacks::feedback.table.photo') }}</th>
+                                <th>{{ trans('feedbacks::feedback.table.name') }}</th>
+                                <th>{{ trans('feedbacks::feedback.table.message') }}</th>
                                 <th>{{ trans('core::core.table.created at') }}</th>
                                 <th>{{ trans('core::core.table.actions') }}</th>
                             </tr>

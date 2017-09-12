@@ -15,7 +15,7 @@
         <div class="col-xs-12">
             <div class="box box-primary">
                 <div class="box-header">
-                    {{ trans('orders::orders.title.orders_index_help') }}
+                    {{ trans('orders::orders.help.orders_index_help') }}
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -23,11 +23,11 @@
                         <table class="data-table table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>{{ trans('core::core.table.dish') }}</th>
-                                <th>{{ trans('core::core.table.name') }}</th>
-                                <th>{{ trans('core::core.table.tel') }}</th>
-                                <th>{{ trans('core::core.table.count') }}</th>
-                                <th>{{ trans('core::core.table.status') }}</th>
+                                <th>{{ trans('orders::orders.table.dish') }}</th>
+                                <th>{{ trans('orders::orders.table.name') }}</th>
+                                <th>{{ trans('orders::orders.table.tel') }}</th>
+                                <th>{{ trans('orders::orders.table.count') }}</th>
+                                <th>{{ trans('orders::orders.table.status') }}</th>
                                 <th>{{ trans('core::core.table.created at') }}</th>
                                 <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
                             </tr>
@@ -78,11 +78,11 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th>{{ trans('core::core.table.dish') }}</th>
-                                <th>{{ trans('core::core.table.name') }}</th>
-                                <th>{{ trans('core::core.table.tel') }}</th>
-                                <th>{{ trans('core::core.table.count') }}</th>
-                                <th>{{ trans('core::core.table.status') }}</th>
+                                <th>{{ trans('orders::orders.table.dish') }}</th>
+                                <th>{{ trans('orders::orders.table.name') }}</th>
+                                <th>{{ trans('orders::orders.table.tel') }}</th>
+                                <th>{{ trans('orders::orders.table.count') }}</th>
+                                <th>{{ trans('orders::orders.table.status') }}</th>
                                 <th>{{ trans('core::core.table.created at') }}</th>
                                 <th>{{ trans('core::core.table.actions') }}</th>
                             </tr>

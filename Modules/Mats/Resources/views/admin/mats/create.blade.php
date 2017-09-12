@@ -50,31 +50,101 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="form-group">
-                {!! Form::label("category", 'Category:') !!}
-                <select name="category_id" id="category" class="form-control">
-                    <?php foreach ($categories as $category): ?>
-                    <option value="{{ $category->id }}">{{ $category->title }}</option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
             <div class="box box-primary">
-                {{ trans('mats::mats.messages.mats_image_help') }}
                 <div class="box-body">
+                    <div class="form-group">
+
+
+                        <div class="radio parent">
+                            <input type="radio" id="type_news" name="mat_type" value="1" checked><label for="type_news">{{ trans('mats::matcategories.parents.parent_1') }}</label>
+                            <div class="radio under-radio">
+                                <input type="radio" id="category_id_01" name="category_id" value="0" checked><label for="category_id_01">{{ trans('mats::mats.form.withot_cat') }}</label>
+                            </div>
+
+                            <?php foreach ($news_categories as $category): ?>
+
+                            <div class="radio under-radio">
+                                <input type="radio" id="category_id_{{ $category->id }}" name="category_id" value="{{ $category->id }}"><label for="category_id_{{ $category->id }}">{{ $category->title }}</label>
+                            </div>
+
+                            <?php endforeach; ?>
+
+                        </div>
+
+                        <div class="radio parent">
+                            <input type="radio" id="type_events" name="mat_type" value="2"><label for="type_events">{{ trans('mats::matcategories.parents.parent_2') }}</label>
+                            <div class="radio under-radio">
+                                <input type="radio" id="category_id_02" name="category_id" value="0"><label for="category_id_02">{{ trans('mats::mats.form.withot_cat') }}</label>
+                            </div>
+                            <?php foreach ($events_categories as $category): ?>
+                            <div class="radio under-radio">
+                                <input type="radio" id="category_id_{{ $category->id }}" name="category_id" value="{{ $category->id }}"><label for="category_id_{{ $category->id }}">{{ $category->title }}</label>
+                            </div>
+                            <?php endforeach; ?>
+
+                        </div>
+
+                        <div class="radio parent">
+                            <input type="radio" id="type_collective" name="mat_type" value="3"><label for="type_collective">{{ trans('mats::matcategories.parents.parent_3') }}</label>
+                            <div class="radio under-radio">
+                                <input type="radio" id="category_id_03" name="category_id" value="0"><label for="category_id_03">{{ trans('mats::mats.form.withot_cat') }}</label>
+                            </div>
+                            <?php foreach ($collective_categories as $category): ?>
+                            <div class="radio under-radio">
+                                <input type="radio" id="category_id_{{ $category->id }}" name="category_id" value="{{ $category->id }}"><label for="category_id_{{ $category->id }}">{{ $category->title }}</label>
+                            </div>
+                            <?php endforeach; ?>
+
+                        </div>
+
+                        <div class="radio parent">
+                            <input type="radio" id="type_gallery" name="mat_type" value="4"><label for="type_gallery">{{ trans('mats::matcategories.parents.parent_4') }}</label>
+                            <div class="radio under-radio">
+                                <input type="radio" id="category_id_04" name="category_id" value="0"><label for="category_id_04">{{ trans('mats::mats.form.withot_cat') }}</label>
+                            </div>
+                            <?php foreach ($gallery_categories as $category): ?>
+                            <div class="radio under-radio">
+                                <input type="radio" id="category_id_{{ $category->id }}" name="category_id" value="{{ $category->id }}"><label for="category_id_{{ $category->id }}">{{ $category->title }}</label>
+                            </div>
+                            <?php endforeach; ?>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box box-primary">
+                <div class="box-body">
+                    {{ trans('mats::mats.messages.mats_image_help') }}
                     @mediaSingle('Mats')
                 </div>
             </div>
             <div class="box box-primary">
-                {{ trans('mats::mats.messages.mats_gallery_help') }}
                 <div class="box-body">
+                    {{ trans('mats::mats.messages.mats_gallery_help') }}
                     @mediaMultiple('MatsGallery')
                 </div>
             </div>
         </div>
 
 
+
     </div>
     {!! Form::close() !!}
+
+
+    <style>
+        .form-group .radio .radio.under-radio{
+            margin-left: 45px;
+            margin-top: 5px;
+        }
+        .under-radio label{
+            padding-left:15px;
+        }
+        .radio.parent{
+            margin-bottom:30px;
+        }
+    </style>
 @stop
 
 
@@ -114,6 +184,27 @@
                 input = '<input type="hidden" name="' + name + '" value="0" />';
             $(this).parent().append(input);
         });
+
+
+
+        $('.radio.parent > input').iCheck({
+            checkboxClass: 'icheckbox_minimal',
+            radioClass: 'iradio_flat-blue'
+        }).on('ifClicked', function(){
+            $('.radio.under-radio input').iCheck('uncheck');
+            $(this).closest('.radio.parent').find('.radio.under-radio input').first().iCheck('check');
+        });
+
+
+        $('.radio.under-radio input').iCheck({
+            checkboxClass: 'icheckbox_minimal',
+            radioClass: 'iradio_flat-blue'
+        }).on('ifClicked', function(){
+            $('.radio.parent > div input').iCheck('uncheck');
+            $(this).closest('.radio.parent').find('> div input').iCheck('check');
+        });
+
+
     });
 </script>
 @endpush

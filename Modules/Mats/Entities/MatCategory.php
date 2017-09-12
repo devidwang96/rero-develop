@@ -12,5 +12,5 @@ class MatCategory extends Model
 
     protected $table = 'mats__matcategories';
     public $translatedAttributes = ['title', 'teaser'];
-    protected $fillable = ['title', 'teaser', 'status', 'mat_category_id'];
+    protected $fillable = ['title', 'teaser', 'status', 'mat_category_id', 'category_type'];
 }

@@ -14,7 +14,7 @@ use Modules\Media\Repositories\FileRepository;
 use Modules\Dishes\Entities\Dish;
 use Modules\Dishes\Entities\DishCategory;
 
-use Modules\MainPage\Entities\Mainpage;
+use Modules\PageSets\Entities\Sets;
 use Modules\Feedbacks\Entities\Feedback;
 
 class PublicController extends BasePublicController
@@ -55,17 +55,18 @@ class PublicController extends BasePublicController
      */
     public function homepage(FileRepository $files)
     {
+
         $dishes = Dish::all()
             ->where('status', '=',1)
             ->where('on_main', '=', 1);
 
         $categories = DishCategory::all();
 
-        $mainpage = Mainpage::all();
+        $pagesets = Sets::all();
 
         $feedbacks = Feedback::all()->where('status', '=', 1);
 
-        return view('home', compact('dishes', 'files', 'categories', 'mainpage', 'feedbacks'));
+        return view('home', compact('dishes', 'files', 'categories', 'pagesets', 'feedbacks'));
     }
 
     public function news(FileRepository $files)

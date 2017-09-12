@@ -38,7 +38,7 @@ class RegisterOrdersSidebar implements \Maatwebsite\Sidebar\SidebarExtender
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('orders::orders.title.orders'), function (Item $item) {
-                $item->icon('fa fa-copy');
+                $item->icon('fa fa-shopping-basket');
                 $item->weight(10);
                 $item->route('admin.orders.order.index');
                 $item->authorize(

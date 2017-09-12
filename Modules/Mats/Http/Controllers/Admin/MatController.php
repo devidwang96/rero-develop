@@ -39,7 +39,6 @@ class MatController extends AdminBaseController
         $mats = $this->mat->all();
 
         $categories = MatCategory::all();
-
         return view('mats::admin.mats.index', compact('mats', 'categories'));
     }
 
@@ -50,9 +49,12 @@ class MatController extends AdminBaseController
      */
     public function create()
     {
-        $categories = MatCategory::all();
+        $news_categories = MatCategory::all()->where('category_type', '=', 1);
+        $events_categories = MatCategory::all()->where('category_type', '=', 2);
+        $collective_categories = MatCategory::all()->where('category_type', '=', 3);
+        $gallery_categories = MatCategory::all()->where('category_type', '=', 4);
 
-        return view('mats::admin.mats.create', compact('categories'));
+        return view('mats::admin.mats.create', compact('news_categories', 'events_categories', 'collective_categories', 'gallery_categories'));
     }
 
     /**
@@ -77,10 +79,13 @@ class MatController extends AdminBaseController
      */
     public function edit(Mat $mat)
     {
-        $categories = MatCategory::all();
+        $news_categories = MatCategory::all()->where('category_type', '=', 1);
+        $events_categories = MatCategory::all()->where('category_type', '=', 2);
+        $collective_categories = MatCategory::all()->where('category_type', '=', 3);
+        $gallery_categories = MatCategory::all()->where('category_type', '=', 4);
 
         $thumbnail = $this->file->findFileByZoneForEntity('MatsGallery', $mat);
-        return view('mats::admin.mats.edit', compact('mat', 'thumbnail', 'categories'));
+        return view('mats::admin.mats.edit', compact('mat', 'thumbnail', 'categories', 'news_categories', 'events_categories', 'collective_categories', 'gallery_categories'));
     }
 
     /**

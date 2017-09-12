@@ -3,7 +3,6 @@
         {!! Form::label("{$lang}[title]", trans('mats::matcategories.form.title')) !!}
         {!! Form::text("{$lang}[title]", old("$lang.[title]"), ['class' => 'form-control', 'placeholder' => trans('mats::matcategories.form.title')]) !!}
         {!! $errors->first("$lang.title", '<span class="help-block">:message</span>') !!}
-
     </div>
     <div class='form-group{{ $errors->has("$lang.teaser") ? ' has-error' : '' }}'>
         {!! Form::label("{$lang}[teaser]", trans('mats::matcategories.form.teaser')) !!}

@@ -38,13 +38,13 @@ class RegisterMatsSidebar implements \Maatwebsite\Sidebar\SidebarExtender
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('mats::mats.title.mats'), function (Item $item) {
-                $item->icon('fa fa-copy');
+                $item->icon('fa fa-clipboard');
                 $item->weight(10);
                 $item->authorize(
                      /* append */
                 );
                 $item->item(trans('mats::mats.title.mats'), function (Item $item) {
-                    $item->icon('fa fa-copy');
+                    $item->icon('fa fa-clipboard');
                     $item->weight(0);
                     $item->append('admin.mats.mat.create');
                     $item->route('admin.mats.mat.index');
@@ -53,7 +53,7 @@ class RegisterMatsSidebar implements \Maatwebsite\Sidebar\SidebarExtender
                     );
                 });
                 $item->item(trans('mats::matcategories.title.matcategories'), function (Item $item) {
-                    $item->icon('fa fa-copy');
+                    $item->icon('fa fa-clipboard');
                     $item->weight(0);
                     $item->append('admin.mats.matcategory.create');
                     $item->route('admin.mats.matcategory.index');

@@ -17,7 +17,7 @@ $router->group(['prefix' =>'/feedbacks'], function (Router $router) {
         'uses' => 'FeedbackController@create',
         'middleware' => 'can:feedbacks.feedback.create'
     ]);
-    $router->post('feedback', [
+    $router->post('feedback/admincreate', [
         'as' => 'admin.feedbacks.feedback.store',
         'uses' => 'FeedbackController@store',
         'middleware' => 'can:feedbacks.feedback.create'

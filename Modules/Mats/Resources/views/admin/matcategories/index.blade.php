@@ -2,11 +2,11 @@
 
 @section('content-header')
     <h1>
-        {{ trans('mats::categories.title.categories') }}
+        {{ trans('mats::matcategories.title.matcategories') }}
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
-        <li class="active">{{ trans('mats::categories.title.categories') }}</li>
+        <li class="active">{{ trans('mats::matcategories.title.matcategories') }}</li>
     </ol>
 @stop
 
@@ -31,6 +31,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>{{ trans('mats::matcategories.table.name') }}</th>
+                                <th>{{ trans('mats::matcategories.table.parent') }}</th>
                                 <th>{{ trans('mats::matcategories.table.teaser') }}</th>
                                 <th>{{ trans('core::core.table.created at') }}</th>
                                 <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
@@ -48,6 +49,11 @@
                                 <td>
                                     <a href="{{ route('admin.mats.matcategory.edit', [$category->id]) }}">
                                         {{ $category->title }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.mats.matcategory.edit', [$category->id]) }}">
+                                        {{ trans('mats::matcategories.parents.parent_'.$category->category_type) }}
                                     </a>
                                 </td>
                                 <td>
@@ -76,6 +82,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>{{ trans('mats::matcategories.table.name') }}</th>
+                                <th>{{ trans('mats::matcategories.table.parent') }}</th>
                                 <th>{{ trans('mats::matcategories.table.teaser') }}</th>
                                 <th>{{ trans('core::core.table.created at') }}</th>
                                 <th>{{ trans('core::core.table.actions') }}</th>

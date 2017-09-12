@@ -15,8 +15,8 @@ class CreateMatsMatCategoriesTable extends Migration
         Schema::create('mats__matcategories', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('parent_id');
 
+            $table->tinyInteger('category_type')->default(0);
             $table->tinyInteger('status')->default(0);
 
             $table->timestamps();

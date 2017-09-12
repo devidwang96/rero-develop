@@ -19,23 +19,23 @@
                 <div class="box-body">
                     <?php $old_name = isset($order->name) ? $order->name : ''; ?>
                     <div class='form-group{{ $errors->has("name") ? ' has-error' : '' }}'>
-                        {!! Form::label("name", trans('orders::order.form.name')) !!}
-                        {!! Form::text("name", old("name", $old_name), ['class' => 'form-control', 'placeholder' => trans('orders::order.form.name')]) !!}
+                        {!! Form::label("name", trans('orders::orders.form.name')) !!}
+                        {!! Form::text("name", old("name", $old_name), ['class' => 'form-control', 'placeholder' => trans('orders::orders.form.name')]) !!}
                         {!! $errors->first("name", '<span class="help-block">:message</span>') !!}
                     </div>
 
                     <?php $old_tel = isset($order->tel) ? $order->tel : ''; ?>
                     <div class='form-group{{ $errors->has("tel") ? ' has-error' : '' }}'>
-                        {!! Form::label("tel", trans('orders::order.form.tel')) !!}
-                        {!! Form::text("tel", old("tel", $old_tel), ['class' => 'form-control', 'placeholder' => trans('orders::order.form.tel')]) !!}
+                        {!! Form::label("tel", trans('orders::orders.form.tel')) !!}
+                        {!! Form::text("tel", old("tel", $old_tel), ['class' => 'form-control', 'placeholder' => trans('orders::orders.form.tel')]) !!}
                         {!! $errors->first("tel", '<span class="help-block">:message</span>') !!}
                     </div>
 
 
                     <?php $old_count = isset($order->count) ? $order->count : ''; ?>
                     <div class='form-group{{ $errors->has("count") ? ' has-error' : '' }}'>
-                        {!! Form::label("count", trans('orders::order.form.count')) !!}
-                        {!! Form::text("count", old("count", $old_count), ['class' => 'form-control', 'placeholder' => trans('orders::order.form.count')]) !!}
+                        {!! Form::label("count", trans('orders::orders.form.count')) !!}
+                        {!! Form::text("count", old("count", $old_count), ['class' => 'form-control', 'placeholder' => trans('orders::orders.form.count')]) !!}
                         {!! $errors->first("count", '<span class="help-block">:message</span>') !!}
                     </div>
 
@@ -78,7 +78,7 @@
 @section('shortcuts')
     <dl class="dl-horizontal">
         <dt><code>b</code></dt>
-        <dd>{{ trans('core::core.back to index') }}</dd>
+        <dd>{{ trans('orders::orders.back to index') }}</dd>
     </dl>
 @stop
 

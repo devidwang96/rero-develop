@@ -2,12 +2,12 @@
 
 @section('content-header')
     <h1>
-        {{ trans('dishes::categories.title.edit category') }}
+        {{ trans('dishes::dishcategories.title.edit dishcategory') }}
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
-        <li><a href="{{ route('admin.dishes.dishcategory.index') }}">{{ trans('dishes::categories.title.categories') }}</a></li>
-        <li class="active">{{ trans('dishes::categories.title.edit category') }}</li>
+        <li><a href="{{ route('admin.dishes.dishcategory.index') }}">{{ trans('dishes::dishcategories.title.dishcategories') }}</a></li>
+        <li class="active">{{ trans('dishes::dishcategories.title.edit dishcategory') }}</li>
     </ol>
 @stop
 

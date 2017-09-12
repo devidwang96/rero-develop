@@ -63,7 +63,7 @@ class OrderController extends AdminBaseController
         $this->order->create($request->all());
 
         return redirect()->route('admin.orders.order.index')
-            ->withSuccess(trans('core::core.messages.resource created', ['name' => trans('orders::orders.title.orders')]));
+            ->withSuccess(trans('orders::orders.messages.resource created', ['name' => trans('orders::orders.title.orders')]));
     }
 
     /**
@@ -103,6 +103,6 @@ class OrderController extends AdminBaseController
         $this->order->destroy($order);
 
         return redirect()->route('admin.orders.order.index')
-            ->withSuccess(trans('core::core.messages.resource deleted', ['name' => trans('orders::orders.title.orders')]));
+            ->withSuccess(trans('orders::orders.messages.resource deleted', ['name' => trans('orders::orders.title.orders')]));
     }
 }
