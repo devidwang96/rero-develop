@@ -84,13 +84,13 @@ CKEDITOR.stylesSet.add( 'default', [
 	{
 		name: 'Styled Image (left)',
 		element: 'img',
-		attributes: { 'class': 'left' }
+		attributes: { 'style': 'border: 1px solid #ccc;float: left;margin-right: 15px;padding: 5px;' }
 	},
 
 	{
 		name: 'Styled Image (right)',
 		element: 'img',
-		attributes: { 'class': 'right' }
+		attributes: { 'style': 'border: 1px solid #ccc;float: right;margin-left: 15px;padding: 5px;' }
 	},
 
 	{

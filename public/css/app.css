@@ -93,6 +93,10 @@ ul {
   margin: 0;
   padding: 0; }
 
+table td {
+  padding: 10px;
+  border: 2px solid #fff; }
+
 h1, h2 {
   text-align: center; }
 
@@ -109,6 +113,18 @@ h3 {
 section {
   margin-top: 30px;
   padding: 50px 0; }
+
+.modal {
+  bottom: -5px; }
+  .modal img {
+    max-width: 100%; }
+  .modal .modal-title {
+    color: #d2462d;
+    font-weight: bold;
+    font-size: 28px; }
+  .modal .modal-descr {
+    text-align: left;
+    margin: 20px 0; }
 
 .section-title {
   margin: 0;
@@ -162,10 +178,21 @@ a {
   margin-top: 35px;
   text-align: center; }
 
-.page-default {
+.page-default section.page__content {
+  margin-top: 0;
+  padding-bottom: 0; }
+
+.page-default .page__title {
+  color: #fff;
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  padding: 25px 0;
+  margin-bottom: 63px; }
+
+.page-default .page__text {
+  background-color: #24140e;
+  padding: 40px 0;
   color: #fff; }
-  .page-default section.page__content {
-    margin-top: 0; }
 
 .page-home {
   color: #fff; }
@@ -308,10 +335,6 @@ a {
         left: 0; }
       .page-home .page-home__about .about__slider .slick-next {
         right: 0; }
-    .page-home .page-home__about .modal {
-      bottom: -5px; }
-      .page-home .page-home__about .modal img {
-        max-width: 100%; }
   .page-home .home-page__addition-content {
     background: rgba(255, 255, 255, 0.9);
     color: #000; }

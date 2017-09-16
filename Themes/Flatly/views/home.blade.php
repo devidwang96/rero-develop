@@ -62,7 +62,7 @@
                             ?>
                             <img src="{{ Imagy::getThumbnail($category_img, 'DishesCategoryOnMainThumb') }}">
                             <p class="dish__description">{{$category->teaser}}</p>
-                            <p class="link-center"><a href="/menu/{{$category->id}}" class="button button-red">{{ trans('translation::translations.frontend.mainpage.see_button') }}</a></p>
+                            <p class="link-center"><a href="/menu/#category_{{$category->id}}" class="button button-red">{{ trans('translation::translations.frontend.mainpage.see_button') }}</a></p>
                         </div>
                     </div>
                     <?php endforeach ?>
@@ -101,21 +101,41 @@
 
                 <div class="dishes-catalog__catalog-dishes">
                     <?php if (isset($dishes)): ?>
-                    <?php foreach ($dishes as $dish): ?>
-                    <a href="/dishes/{{$dish->id}}" class="dish">
-                        <div class="dish__preview">
-                            <?php
-                                $dish_img = $files->findFileByZoneForEntity('Dishes', $dish)->path;
+                        <?php foreach ($dishes as $dish): ?>
+                            <div class="dish" data-toggle="modal" data-target="#dish_modal_{{$dish->id}}">
+                                <div class="dish__preview">
+                                    <?php
+                                        $dish_img = $files->findFileByZoneForEntity('Dishes', $dish)->path;
+                                    ?>
+                                    <img src="{{ Imagy::getThumbnail($dish_img, 'DishesOnMainThumb') }}">
+                                </div>
+                                <div class="dish__data">
+                                    <p class="dish__data-title">{{$dish->title}}</p>
+                                    <p class="dish__data-category">{{ $categories->find($dish->category_id)->title }}</p>
+                                </div>
+                            </div>
 
-                            ?>
-                            <img src="{{ Imagy::getThumbnail($dish_img, 'DishesOnMainThumb') }}">
-                        </div>
-                        <div class="dish__data">
-                            <p class="dish__data-title">{{$dish->title}}</p>
-                            <p class="dish__data-category">{{ $categories->find($dish->category_id)->title }}</p>
-                        </div>
-                    </a>
-                    <?php endforeach; ?>
+                            <div id="dish_modal_{{$dish->id}}" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">{{$dish->title}}</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="modal-preview">
+                                                <img src="{{ $dish_img }}">
+                                            </div>
+                                            <div class="modal-descr">
+                                                {!! $dish->full_description !!}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
             </div>
@@ -246,6 +266,8 @@
             i++;
         });
         i = 0;
+
+        $('body').css('background-image', 'url('+ images[0] +')');
         setInterval(function(){
             $('body').css('background-image', 'url('+ images[i] +')');
             if(i == (images.length -1)){
@@ -254,6 +276,8 @@
                 i++;
             }
         },7000);
+
+
         if($('.modal.notification').length){
             $('.modal.notification').modal('show');
         }

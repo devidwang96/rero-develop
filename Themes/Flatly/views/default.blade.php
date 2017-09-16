@@ -14,16 +14,21 @@
 @stop
 
 @section('content')
+
     <div class="page page-default">
-        <div class="container">
-            <section class="page__content">
+        <section class="page__content">
+            <div class="container">
                 <h1 class="page__title">{{ $page->title }}</h1>
-                <div class="page__text">
+            </div>
+            <div class="page__text">
+                <div class="container">
                     {!! $page->body !!}
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </div>
+
+
 @stop
 
 @section('scripts')

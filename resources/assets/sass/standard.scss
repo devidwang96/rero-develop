@@ -19,6 +19,14 @@ ul{
   margin:0;
   padding:0;
 }
+
+table{
+  td{
+    padding: 10px;
+    border: 2px solid #fff;
+  }
+}
+
 h1,h2{
   text-align:center;
 }
@@ -35,6 +43,22 @@ h3{
 section{
   margin-top:30px;
   padding:50px 0;
+}
+
+.modal{
+  bottom:-5px;
+  img{
+    max-width:100%;
+  }
+  .modal-title{
+    color: $red;
+    font-weight: bold;
+    font-size: 28px;
+  }
+  .modal-descr{
+    text-align:left;
+    margin:20px 0;
+  }
 }
 
 .section-title{
@@ -105,6 +129,19 @@ a{
 .page-default{
   section.page__content{
     margin-top:0;
+    padding-bottom:0;
   }
-  color:#fff;
+
+  .page__title{
+    color: #fff;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    padding: 25px 0;
+    margin-bottom: 63px;
+  }
+  .page__text{
+    background-color: #24140e;
+    padding: 40px 0;
+    color:#fff;
+  }
 }
