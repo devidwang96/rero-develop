@@ -62,7 +62,7 @@
                             ?>
                             <img src="{{ Imagy::getThumbnail($category_img, 'DishesCategoryOnMainThumb') }}">
                             <p class="dish__description">{{$category->teaser}}</p>
-                            <p class="link-center"><a href="/menu/#category_{{$category->id}}" class="button button-red">{{ trans('translation::translations.frontend.mainpage.see_button') }}</a></p>
+                            <p class="link-center"><a href="/menu/#dishes_category_{{$category->id}}" class="button button-red">{{ trans('translation::translations.frontend.mainpage.see_button') }}</a></p>
                         </div>
                     </div>
                     <?php endforeach ?>
@@ -95,14 +95,14 @@
                         <?php endif; ?>
                     </div>
 
-                    <p><a href="#" class="button button-red">{{ trans('translation::translations.frontend.mainpage.show_full_menu_string')}}</a></p>
+                    <p><a href="/menu" class="button button-red">{{ trans('translation::translations.frontend.mainpage.show_full_menu_string')}}</a></p>
 
                 </div>
 
                 <div class="dishes-catalog__catalog-dishes">
                     <?php if (isset($dishes)): ?>
                         <?php foreach ($dishes as $dish): ?>
-                            <div class="dish" data-toggle="modal" data-target="#dish_modal_{{$dish->id}}">
+                            <div class="dish">
                                 <div class="dish__preview">
                                     <?php
                                         $dish_img = $files->findFileByZoneForEntity('Dishes', $dish)->path;
@@ -112,6 +112,10 @@
                                 <div class="dish__data">
                                     <p class="dish__data-title">{{$dish->title}}</p>
                                     <p class="dish__data-category">{{ $categories->find($dish->category_id)->title }}</p>
+                                </div>
+                                <div class="dish__buttons">
+                                    <p><button data-toggle="modal" data-target="#dish_modal_{{$dish->id}}" class="button button-blue">Посмотреть</button></p>
+                                    <p><button data-toggle="modal" data-target="#dish_pay_modal_{{$dish->id}}" class="button button-red">Заказать</button></p>
                                 </div>
                             </div>
 
@@ -130,9 +134,69 @@
                                             <div class="modal-descr">
                                                 {!! $dish->full_description !!}
                                             </div>
+                                            <div class="modal-paysection">
+                                                <h3>Заказать блюдо</h3>
+                                                {!! Form::open(['route' => ['admin.orders.order.user_store'], 'method' => 'post']) !!}
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-md-6">
+                                                            <label for="dish_{{$dish->id}}_name">
+                                                                <p>Напишите своё имя</p>
+                                                                <input required type="text" name="name" id="dish_{{$dish->id}}_name">
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-xs-12 col-md-6">
+                                                            <label for="dish_{{$dish->id}}_tel">
+                                                                <p>Напишите свой телефон</p>
+                                                                <input required type="text" name="tel" id="dish_{{$dish->id}}_tel">
+                                                            </label>
+                                                        </div>
+
+                                                        <input type="hidden" name="dish_id" value="{{$dish->id}}">
+                                                        <div class="col-xs-12 modal_submit">
+                                                            <button type="submit" class="button button-red">Заказать</button>
+                                                        </div>
+                                                    </div>
+                                                {!! Form::close() !!}
+                                            </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
 
+                            <div id="dish_pay_modal_{{$dish->id}}" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">заказать блюдо: {{$dish->title}}</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="modal-paysection">
+                                                {!! Form::open(['route' => ['admin.orders.order.user_store'], 'method' => 'post']) !!}
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <label for="dish_{{$dish->id}}_name">
+                                                            <p>Напишите своё имя</p>
+                                                            <input required type="text" name="name" id="dish_{{$dish->id}}_name">
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <label for="dish_{{$dish->id}}_tel">
+                                                            <p>Напишите свой телефон</p>
+                                                            <input required type="text" name="tel" id="dish_{{$dish->id}}_tel">
+                                                        </label>
+                                                    </div>
+
+                                                    <input type="hidden" name="dish_id" value="{{$dish->id}}">
+                                                    <div class="col-xs-12 modal_submit">
+                                                        <button type="submit" class="button button-red">Заказать</button>
+                                                    </div>
+                                                </div>
+                                                {!! Form::close() !!}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -195,7 +259,7 @@
 
 
         <?php if($pagesets->first()->home_feedbacks_show == 1): ?>
-            <section class="page-home__feedbacks home-section">
+            <section class="section-feedbacks home-section">
                 <h2 class="section-title">{{ trans('translation::translations.frontend.mainpage.leave_feedback_string') }}</h2>
                 <p class="title-addition">{{ trans('translation::translations.frontend.mainpage.leave_feedback_addition') }}</p>
 
@@ -248,7 +312,7 @@
                     <?php endif; ?>
                 </div>
 
-                <p class="link-center"><a href="#" class="button button-red">{{ trans('translation::translations.frontend.mainpage.make_order') }}</a></p>
+                <p class="link-center"><a href="/menu#menu" class="button button-red">{{ trans('translation::translations.frontend.mainpage.make_order') }}</a></p>
             </section>
         <?php endif; ?>
     </div>
@@ -277,14 +341,11 @@
             }
         },7000);
 
-
-        if($('.modal.notification').length){
-            $('.modal.notification').modal('show');
-        }
         $('.page-home__about .about__slider').slick({
             centerMode: true,
             centerPadding: '',
             slidesToShow: 5,
+            autoplay: 3000,
             responsive: [
                 {
                     breakpoint: 1200,

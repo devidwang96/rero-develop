@@ -19,5 +19,6 @@
             {{--<li><a href="#">Онлайн-заказ</a></li>--}}
         {{--</ul>--}}
         {!! Menu::get('main_menu') !!}
+        {{--return PHP_EOL . '<ul class="header__navigation-menu">' . PHP_EOL;--}}
     </div>
 </div>

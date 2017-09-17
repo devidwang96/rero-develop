@@ -25,7 +25,8 @@ return [
         'status' => 'Показывать',
     ],
     'messages' => [
-       'upload_image' => 'Фотография отзываемого'
+        'upload_image' => 'Фотография отзываемого',
+        'feedback created by user' => 'Ваш отзыв успешно принят :)'
     ],
     'validation' => [
     ],

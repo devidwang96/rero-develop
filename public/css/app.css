@@ -115,16 +115,37 @@ section {
   padding: 50px 0; }
 
 .modal {
+  color: #000;
   bottom: -5px; }
   .modal img {
     max-width: 100%; }
   .modal .modal-title {
     color: #d2462d;
     font-weight: bold;
-    font-size: 28px; }
+    font-size: 28px;
+    text-align: center; }
   .modal .modal-descr {
     text-align: left;
     margin: 20px 0; }
+  .modal .modal-footer {
+    text-align: center; }
+  .modal .modal-paysection {
+    padding: 15px 0;
+    border-top: 2px solid #d2462d; }
+    .modal .modal-paysection * {
+      color: #000; }
+    .modal .modal-paysection h3 {
+      text-align: center;
+      font-size: 24px;
+      color: #d2462d;
+      font-weight: bold; }
+    .modal .modal-paysection label {
+      width: 100%; }
+      .modal .modal-paysection label input {
+        width: 100%; }
+    .modal .modal-paysection .modal_submit {
+      margin-top: 20px;
+      text-align: center; }
 
 .section-title {
   margin: 0;
@@ -173,26 +194,79 @@ a {
     background: #d2462d; }
     .button.button-red:hover {
       background: #13202e; }
+  .button.button-blue {
+    color: #fff;
+    background: #13202e; }
+    .button.button-blue:hover {
+      background: #503626; }
 
 .link-center {
   margin-top: 35px;
   text-align: center; }
 
-.page-default section.page__content {
+.page-default section.page__content,
+.page-menu section.page__content {
   margin-top: 0;
   padding-bottom: 0; }
 
-.page-default .page__title {
+.page-default .page__title,
+.page-menu .page__title {
   color: #fff;
   border-top: 2px solid #fff;
   border-bottom: 2px solid #fff;
   padding: 25px 0;
   margin-bottom: 63px; }
 
-.page-default .page__text {
+.page-default .page__text,
+.page-menu .page__text {
   background-color: #24140e;
   padding: 40px 0;
   color: #fff; }
+
+.modal.notification * {
+  text-align: center; }
+
+.modal.notification .modal-body p {
+  font-size: 24px; }
+
+.modal.notification.success .modal-title {
+  color: #217300; }
+
+section.section-feedbacks {
+  background-color: #24140e;
+  padding-bottom: 100px;
+  color: #fff; }
+  section.section-feedbacks form {
+    text-align: center; }
+    section.section-feedbacks form label {
+      text-align: left;
+      width: 100%; }
+      section.section-feedbacks form label p {
+        margin: 30px 0 5px; }
+      section.section-feedbacks form label input,
+      section.section-feedbacks form label textarea {
+        border-radius: 2px;
+        background-color: #503626;
+        border: none;
+        width: 100%;
+        padding: 15px 20px;
+        color: #fff; }
+      section.section-feedbacks form label textarea {
+        height: 150px;
+        margin-bottom: 30px; }
+  section.section-feedbacks .feedbacks {
+    margin-bottom: 20px; }
+    section.section-feedbacks .feedbacks .feedback {
+      margin-top: 20px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #503626; }
+      section.section-feedbacks .feedbacks .feedback .feedback__name {
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 40px; }
+      section.section-feedbacks .feedbacks .feedback .feedback__created-at {
+        font-size: 14px;
+        margin-top: 20px; }
 
 .page-home {
   color: #fff; }
@@ -269,13 +343,14 @@ a {
         display: inline-block;
         vertical-align: top;
         width: 250px;
-        min-height: 400px;
+        height: 500px;
         background-color: #fff;
         color: #000;
         margin: 15px 5px 0;
         text-align: left;
         transition: all 0.5s;
-        text-decoration: none !important; }
+        text-decoration: none !important;
+        position: relative; }
         .page-home .page-home__dishes-catalog .dishes-catalog__catalog-dishes > .dish .dish__preview img {
           width: 100%;
           height: 250px; }
@@ -290,12 +365,15 @@ a {
             color: #d19366;
             transition: all 0.5s;
             margin-top: 5px; }
-        .page-home .page-home__dishes-catalog .dishes-catalog__catalog-dishes > .dish:hover {
-          background: #d2462d; }
-          .page-home .page-home__dishes-catalog .dishes-catalog__catalog-dishes > .dish:hover .dish__data .dish__data-title {
-            color: #fff; }
-          .page-home .page-home__dishes-catalog .dishes-catalog__catalog-dishes > .dish:hover .dish__data .dish__data-category {
-            color: #fff; }
+        .page-home .page-home__dishes-catalog .dishes-catalog__catalog-dishes > .dish .dish__buttons {
+          position: absolute;
+          width: 100%;
+          bottom: 0; }
+          .page-home .page-home__dishes-catalog .dishes-catalog__catalog-dishes > .dish .dish__buttons button {
+            display: block;
+            margin: 0 auto;
+            width: 90%;
+            text-align: center; }
   .page-home .page-home__about {
     position: relative;
     background: rgba(0, 0, 0, 0.7); }
@@ -342,39 +420,49 @@ a {
       margin: 5px;
       padding: 10px;
       border: 1px solid rgba(36, 20, 14, 0.5); }
-  .page-home .page-home__feedbacks {
-    background-color: #24140e;
-    padding-bottom: 100px; }
-    .page-home .page-home__feedbacks form {
-      text-align: center; }
-      .page-home .page-home__feedbacks form label {
-        text-align: left;
-        width: 100%; }
-        .page-home .page-home__feedbacks form label p {
-          margin: 30px 0 5px; }
-        .page-home .page-home__feedbacks form label input,
-        .page-home .page-home__feedbacks form label textarea {
-          border-radius: 2px;
-          background-color: #503626;
-          border: none;
-          width: 100%;
-          padding: 15px 20px;
-          color: #fff; }
-        .page-home .page-home__feedbacks form label textarea {
-          height: 150px;
-          margin-bottom: 30px; }
-    .page-home .page-home__feedbacks .feedbacks {
-      margin-bottom: 20px; }
-      .page-home .page-home__feedbacks .feedbacks .feedback {
-        margin-top: 20px;
-        padding-bottom: 20px;
-        border-bottom: 2px solid #503626; }
-        .page-home .page-home__feedbacks .feedbacks .feedback .feedback__name {
-          font-weight: bold;
-          font-size: 24px;
-          line-height: 40px; }
-        .page-home .page-home__feedbacks .feedbacks .feedback .feedback__created-at {
-          font-size: 14px;
-          margin-top: 20px; }
+
+.page-menu .page__content .page__content-menu {
+  background-color: #24140e;
+  color: #fff;
+  padding: 20px 0 50px; }
+  .page-menu .page__content .page__content-menu h2 {
+    text-align: left;
+    color: #d2462d;
+    margin-bottom: 70px; }
+  .page-menu .page__content .page__content-menu .menu__category {
+    padding-left: 20px;
+    margin-bottom: 50px; }
+    .page-menu .page__content .page__content-menu .menu__category h3 {
+      color: #d2462d; }
+    .page-menu .page__content .page__content-menu .menu__category .menu__category-dishes ul {
+      list-style-type: none; }
+      .page-menu .page__content .page__content-menu .menu__category .menu__category-dishes ul li {
+        width: 100%;
+        display: block;
+        border-bottom: 1px solid #fff;
+        position: relative; }
+        .page-menu .page__content .page__content-menu .menu__category .menu__category-dishes ul li p.dish__title {
+          margin: 0;
+          margin-left: 20px;
+          padding: 10px;
+          padding-left: 30px;
+          border-left: 1px solid #d2462d;
+          transition: all 0.3s; }
+          .page-menu .page__content .page__content-menu .menu__category .menu__category-dishes ul li p.dish__title:hover {
+            cursor: pointer;
+            color: #d2462d; }
+        .page-menu .page__content .page__content-menu .menu__category .menu__category-dishes ul li .dish__right-content {
+          position: absolute;
+          right: -1px;
+          top: 0; }
+          .page-menu .page__content .page__content-menu .menu__category .menu__category-dishes ul li .dish__right-content span.dish__price {
+            color: #d2462d;
+            margin-right: 20px; }
+          .page-menu .page__content .page__content-menu .menu__category .menu__category-dishes ul li .dish__right-content button {
+            border-radius: 0; }
+
+.page-menu .section-feedbacks {
+  margin: 0;
+  background: rgba(0, 0, 0, 0.8); }
 
 /*# sourceMappingURL=app.css.map */

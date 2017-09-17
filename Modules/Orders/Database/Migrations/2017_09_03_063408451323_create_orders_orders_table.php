@@ -19,7 +19,7 @@ class CreateOrdersOrdersTable extends Migration
             $table->string('tel');
             $table->string('count');
             $table->integer('dish_id');
-            $table->string('status');
+            $table->string('status')->default('waiting');
             // Your fields
             $table->timestamps();
         });

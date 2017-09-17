@@ -1,0 +1,60 @@
+.page-menu{
+  .page__content{
+    .page__content-menu{
+      background-color: #24140e;
+      color: #fff;
+      padding: 20px 0 50px;
+      h2{
+        text-align: left;
+        color: $red;
+        margin-bottom: 70px;
+      }
+      .menu__category{
+        padding-left: 20px;
+        margin-bottom: 50px;
+        h3{
+          color:$red;
+        }
+        .menu__category-dishes{
+          ul{
+            list-style-type: none;
+            li{
+              width:100%;
+              display:block;
+              border-bottom:1px solid #fff;
+              position:relative;
+              p.dish__title{
+                margin:0;
+                margin-left:20px;
+                padding:10px;
+                padding-left:30px;
+                border-left:1px solid $red;
+                transition:all 0.3s;
+                &:hover{
+                  cursor:pointer;
+                  color:$red;
+                }
+              }
+              .dish__right-content{
+                position: absolute;
+                right: -1px;
+                top: 0;;
+                span.dish__price{
+                  color:$red;
+                  margin-right: 20px;
+                }
+                button{
+                  border-radius:0;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .section-feedbacks{
+    margin:0;
+    background:rgba(0,0,0,0.8);
+  }
+}

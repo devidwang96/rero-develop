@@ -66,6 +66,22 @@ class OrderController extends AdminBaseController
             ->withSuccess(trans('orders::orders.messages.resource created', ['name' => trans('orders::orders.title.orders')]));
     }
 
+    public function user_store(CreateOrderRequest $request)
+    {
+        $this->order->create($request->all());
+
+        return redirect()->route('homepage')
+            ->withSuccess(trans('orders::orders.messages.order created by user'));
+    }
+
+    public function user_store_menu(CreateOrderRequest $request)
+    {
+        $this->order->create($request->all());
+
+        return redirect()->route('menu')
+            ->withSuccess(trans('orders::orders.messages.order created by user'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

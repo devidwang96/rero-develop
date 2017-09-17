@@ -69,7 +69,15 @@ class FeedbackController extends AdminBaseController
         $this->feedback->create($request->all());
 
         return redirect()->route('homepage')
-            ->withSuccess(trans('core::core.messages.resource created', ['name' => trans('feedbacks::feedback.title.feedback-user')]));
+            ->withSuccess(trans('feedbacks::feedback.messages.feedback created by user'));
+    }
+
+    public function user_store_menu(CreateFeedbackRequest $request)
+    {
+        $this->feedback->create($request->all());
+
+        return redirect()->route('menu')
+            ->withSuccess(trans('feedbacks::feedback.messages.feedback created by user'));
     }
 
     /**

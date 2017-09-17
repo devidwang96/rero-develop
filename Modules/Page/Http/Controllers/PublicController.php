@@ -108,8 +108,14 @@ class PublicController extends BasePublicController
     public function menu(FileRepository $files)
     {
 
+        $dishes = Dish::all()
+            ->where('status', '=',1);
 
-        return view('menu');
+        $categories = DishCategory::all();
+        $feedbacks = Feedback::all()->where('status', '=', 1);
+        $pagesets = Sets::all();
+
+        return view('menu', compact('dishes', 'categories', 'pagesets', 'feedbacks', 'files'));
     }
 
     /**

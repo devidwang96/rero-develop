@@ -22,6 +22,18 @@ $router->group(['prefix' =>'/orders'], function (Router $router) {
         'uses' => 'OrderController@store',
         'middleware' => 'can:orders.orders.create'
     ]);
+
+    $router->post('orders/usercreate', [
+        'as' => 'admin.orders.order.user_store',
+        'uses' => 'OrderController@user_store',
+    ]);
+
+    $router->post('orders/usercreatemenu', [
+        'as' => 'admin.orders.order.user_store_menu',
+        'uses' => 'OrderController@user_store_menu',
+    ]);
+
+
     $router->get('orders/{order}/edit', [
         'as' => 'admin.orders.order.edit',
         'uses' => 'OrderController@edit',

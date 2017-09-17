@@ -42,5 +42,11 @@
 <?php if (Setting::has('core::analytics-script')): ?>
 {!! Setting::get('core::analytics-script') !!}
 <?php endif; ?>
+
+<script>
+    if($('.modal.notification').length){
+        $('.modal.notification').modal('show');
+    }
+</script>
 </body>
 </html>
