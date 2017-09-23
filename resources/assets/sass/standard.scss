@@ -89,6 +89,13 @@ section{
   }
 }
 
+.bg-transparent{
+  background: rgba(0, 0, 0, 0.8);
+}
+.bg-darkbrown{
+  background: $darkbrown;
+}
+
 .section-title{
   margin:0;
   color: $red;
@@ -107,15 +114,28 @@ textarea{
   resize: none;
 }
 
+html{
 
+
+}
 body{
   padding-right: 0 !important;
   margin: 0;
-  background-image:url(http://www.1zoom.net/big2/44/229358-svetik.jpg);
   background-attachment: fixed;
   background-size:110% auto;
   background-position: top center;
   transition: all 1s;
+}
+
+.bg-dots{
+  background: url(/images/bg-dotted.png);
+  background-size: 9%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
 }
 
 
@@ -161,8 +181,7 @@ a{
   margin-top: 35px;
   text-align: center;
 }
-.page-default,
-.page-menu{
+.page{
   section.page__content{
     margin-top:0;
     padding-bottom:0;
@@ -200,7 +219,6 @@ a{
 
 
 section.section-feedbacks{
-  background-color: $darkbrown;
   padding-bottom: 100px;
   color:#fff;
   form{

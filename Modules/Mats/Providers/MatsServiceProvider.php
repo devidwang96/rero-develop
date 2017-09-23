@@ -82,15 +82,58 @@ class MatsServiceProvider extends ServiceProvider
 
     private function registerThumbnails()
     {
-        $this->app[ThumbnailManager::class]->registerThumbnail('MatsOnMainThumb', [
+        $this->app[ThumbnailManager::class]->registerThumbnail('NewsItemThumb', [
             'fit' => [
-                'width' => '250',
-                'height' => '250',
+                'width' => '900',
+                'height' => '600',
                 'callback' => function ($constraint) {
                     $constraint->upsize();
                 },
             ],
+            'resize' => [
+                'width' => 900,
+                'height' => 600,
+            ],
         ]);
+
+        $this->app[ThumbnailManager::class]->registerThumbnail('EventsItemThumb', [
+            'fit' => [
+                'width' => '900',
+                'height' => '600',
+                'callback' => function ($constraint) {
+                    $constraint->upsize();
+                },
+            ],
+            'resize' => [
+                'width' => 900,
+                'height' => 600,
+            ],
+        ]);
+
+        $this->app[ThumbnailManager::class]->registerThumbnail('CollectiveItemThumb', [
+            'fit' => [
+                'width' => '300',
+                'height' => '500',
+                'callback' => function ($constraint) {
+                    $constraint->upsize();
+                },
+            ],
+            'resize' => [
+                'width' => 300,
+                'height' => 500,
+            ],
+        ]);
+
+        $this->app[ThumbnailManager::class]->registerThumbnail('GalleryItemThumb', [
+            'fit' => [
+                'width' => '300',
+                'height' => '250',
+                'callback' => function ($constraint) {
+                    $constraint->upsize();
+                },
+            ]
+        ]);
+
 
         $this->app[ThumbnailManager::class]->registerThumbnail('MatsCategoryOnMainThumb', [
             'fit' => [

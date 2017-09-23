@@ -31,6 +31,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>{{ trans('mats::mats.table.title') }}</th>
+                                <th>{{ trans('mats::mats.table.type') }}</th>
                                 <th>{{ trans('mats::mats.table.teaser') }}</th>
                                 <th>{{ trans('mats::mats.table.category_title') }}</th>
                                 <th>{{ trans('core::core.table.created at') }}</th>
@@ -42,7 +43,6 @@
                             <?php foreach ($mats as $mat): ?>
 
 
-
                             <tr>
                                 <td>
                                     <a href="{{ route('admin.mats.mat.edit', [$mat->id]) }}">
@@ -52,6 +52,11 @@
                                 <td>
                                     <a href="{{ route('admin.mats.mat.edit', [$mat->id]) }}">
                                         {{ $mat->title }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.mats.mat.edit', [$mat->id]) }}">
+                                        {{ trans('mats::matcategories.parents.parent_'.$mat->mat_type) }}
                                     </a>
                                 </td>
                                 <td>
@@ -94,6 +99,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>{{ trans('mats::mats.table.title') }}</th>
+                                <th>{{ trans('mats::mats.table.type') }}</th>
                                 <th>{{ trans('mats::mats.table.teaser') }}</th>
                                 <th>{{ trans('mats::mats.table.category_title') }}</th>
                                 <th>{{ trans('core::core.table.created at') }}</th>

@@ -76,5 +76,15 @@ class PagesetsServiceProvider extends ServiceProvider
                 },
             ],
         ]);
+
+        $this->app[ThumbnailManager::class]->registerThumbnail('PageBg', [
+            'fit' => [
+                'width' => '1920',
+                'height' => '1200',
+                'callback' => function ($constraint) {
+                    $constraint->upsize();
+                },
+            ],
+        ]);
     }
 }

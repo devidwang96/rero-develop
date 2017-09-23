@@ -7,7 +7,11 @@
         {!! $errors->first("$lang.title", '<span class="help-block">:message</span>') !!}
 
     </div>
-        <?php $oldTeaser = isset($matcategory->translate($lang)->teaser) ? $matcategory->translate($lang)->title : ''; ?>
+
+</div>
+
+<div class="hidden">
+    <?php $oldTeaser = isset($matcategory->translate($lang)->teaser) ? $matcategory->translate($lang)->title : ''; ?>
     <div class='form-group{{ $errors->has("$lang.teaser") ? ' has-error' : '' }}'>
         {!! Form::label("{$lang}[teaser]", trans('mats::matcategories.form.teaser')) !!}
         {!! Form::text("{$lang}[teaser]", old("$lang.[teaser]", $oldTeaser), ['class' => 'form-control teaser', 'placeholder' => trans('mats::matcategories.form.teaser')]) !!}

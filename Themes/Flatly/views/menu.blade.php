@@ -16,8 +16,19 @@
 @stop
 
 @section('content')
-
     <div class="page page-menu">
+
+        <div class="bg-gallery" style="display:none">
+            <?php  $bg_gallery = $files->findMultipleFilesByZoneForEntity('MenuGalleryBg', $pagesets->first()); ?>
+            <?php if (!($bg_gallery)->isEmpty()): ?>
+            <?php foreach ($bg_gallery as $image): ?>
+
+            <img src="{{ $image->path }}">
+
+            <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+
         <section class="page__content">
             <div class="container">
                 <h1 class="page__title">{{ $pagesets->first()->menu_title }}</h1>
@@ -79,7 +90,7 @@
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <div class="modal-paysection">
-                                                                        {!! Form::open(['route' => ['admin.orders.order.user_store_menu'], 'method' => 'post']) !!}
+                                                                        {!! Form::open(['route' => ['user_create_order'], 'method' => 'post']) !!}
                                                                         <div class="row">
                                                                             <div class="col-xs-12 col-md-6">
                                                                                 <label for="dish_{{$dish->id}}_name">
@@ -95,6 +106,7 @@
                                                                             </div>
 
                                                                             <input type="hidden" name="dish_id" value="{{$dish->id}}">
+                                                                            <input type="hidden" name="curpage" value="{{ Request::route()->getName() }}">
                                                                             <div class="col-xs-12 modal_submit">
                                                                                 <button type="submit" class="button button-red">Заказать</button>
                                                                             </div>
@@ -121,12 +133,13 @@
         </section>
 
 
-        <section class="section-feedbacks">
-            <h2 class="section-title"> {{ trans('translation::translations.frontend.menupage.leave_fedback') }}</h2>
+        <?php if($pagesets->first()->menu_feedbacks_show == 1): ?>
+        <section class="section-feedbacks home-section bg-transparent">
+            <h2 class="section-title">Понравилось? - Оставьте отзыв!</h2>
             <p class="title-addition">{{ trans('translation::translations.frontend.mainpage.leave_feedback_addition') }}</p>
 
             <div class="container">
-                {!! Form::open(['route' => ['admin.feedbacks.feedback.user_store_menu'], 'method' => 'post']) !!}
+                {!! Form::open(['route' => ['user_create_feedback'], 'method' => 'post']) !!}
                 <div class="row">
                     <div class="col-md-6">
                         <label for="name">
@@ -154,29 +167,26 @@
                 {{--<label for="feedback_photo"> Загрузите файл--}}
                 {{--<input type="file" name="feedback_photo" id="feedback_photo" style="display:none">--}}
                 {{--</label>--}}
-
+                <input type="hidden" name="curpage" value="{{ Request::route()->getName() }}">
                 {!! Form::close() !!}
             </div>
 
             <div class="container feedbacks">
                 <?php if (isset($feedbacks)): ?>
+                    <?php foreach ($feedbacks as $feedback): ?>
 
-                <?php foreach ($feedbacks as $feedback): ?>
-
-                <div class="feedback">
-                    <div class="feedback__name">{{ $feedback->name }}</div>
-                    <div class="feedback__text">{!! $feedback->message !!}</div>
-                    <div class="feedback__created-at">{{ $feedback->created_at }}</div>
-                </div>
-                <?php endforeach; ?>
-
-
+                    <div class="feedback">
+                        <div class="feedback__name">{{ $feedback->name }}</div>
+                        <div class="feedback__text">{!! $feedback->message !!}</div>
+                        <div class="feedback__created-at">{{ $feedback->created_at }}</div>
+                    </div>
+                    <?php endforeach; ?>
                 <?php endif; ?>
             </div>
 
-            <p class="link-center"><button data-scroll="#menu" href="#" class="button button-red js-scroll-to">{{ trans('translation::translations.frontend.mainpage.make_order') }}</button></p>
+            <p class="link-center"><button class="button button-red js-scroll-to" data-scroll="#menu">{{ trans('translation::translations.frontend.mainpage.make_order') }}</button></p>
         </section>
-
+        <?php endif; ?>
     </div>
 
 

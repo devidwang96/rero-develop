@@ -32,7 +32,7 @@
                                 <th>Id</th>
                                 <th>{{ trans('mats::matcategories.table.name') }}</th>
                                 <th>{{ trans('mats::matcategories.table.parent') }}</th>
-                                <th>{{ trans('mats::matcategories.table.teaser') }}</th>
+                                {{--<th>{{ trans('mats::matcategories.table.teaser') }}</th>--}}
                                 <th>{{ trans('core::core.table.created at') }}</th>
                                 <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
                             </tr>
@@ -56,11 +56,11 @@
                                         {{ trans('mats::matcategories.parents.parent_'.$category->category_type) }}
                                     </a>
                                 </td>
-                                <td>
-                                    <a href="{{ route('admin.mats.matcategory.edit', [$category->id]) }}">
-                                        {{ $category->teaser }}
-                                    </a>
-                                </td>
+                                {{--<td>--}}
+                                    {{--<a href="{{ route('admin.mats.matcategory.edit', [$category->id]) }}">--}}
+                                        {{--{{ $category->teaser }}--}}
+                                    {{--</a>--}}
+                                {{--</td>--}}
                                 <td>
                                     <a href="{{ route('admin.mats.matcategory.edit', [$category->id]) }}">
                                         {{ $category->created_at }}
@@ -83,7 +83,7 @@
                                 <th>Id</th>
                                 <th>{{ trans('mats::matcategories.table.name') }}</th>
                                 <th>{{ trans('mats::matcategories.table.parent') }}</th>
-                                <th>{{ trans('mats::matcategories.table.teaser') }}</th>
+                                {{--<th>{{ trans('mats::matcategories.table.teaser') }}</th>--}}
                                 <th>{{ trans('core::core.table.created at') }}</th>
                                 <th>{{ trans('core::core.table.actions') }}</th>
                             </tr>

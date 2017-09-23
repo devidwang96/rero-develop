@@ -113,6 +113,9 @@
                         <div class="tab-pane" id="pagesets_tab2">
                             <div class="col-md-9">
                                 <div class="box box-primary">
+                                    <div class="box-header">
+                                        <h3 class="box-title">{{ trans('core::core.title.translatable fields') }}</h3>
+                                    </div>
                                     <div class="box-body">
                                         <div class="nav-tabs-custom">
                                             {{--==========TAB HEADERS========--}}
@@ -146,6 +149,25 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="box box-primary">
+                                    <div class="box-header">
+                                        <h3 class="box-title">{{ trans('core::core.title.non translatable fields') }}</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="checkbox">
+                                            <?php $old_news_feedbacks_show = $sets->news_feedbacks_show ?>
+                                            <label for="news_feedbacks_show">
+                                                <input id="news_feedbacks_show"
+                                                       name="news_feedbacks_show"
+                                                       type="checkbox"
+                                                       class="flat-blue"
+                                                       {{ ((bool) $old_news_feedbacks_show) ? 'checked' : '' }}
+                                                       value="1" />
+                                                {{ trans('pagesets::sets.form.home_feedbacks_show') }}
+                                            </label><br>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="box box-primary">
@@ -163,6 +185,9 @@
                         <div class="tab-pane" id="pagesets_tab3">
                             <div class="col-md-9">
                                 <div class="box box-primary">
+                                    <div class="box-header">
+                                        <h3 class="box-title">{{ trans('core::core.title.translatable fields') }}</h3>
+                                    </div>
                                     <div class="box-body">
                                         <div class="nav-tabs-custom">
                                             {{--==========TAB HEADERS========--}}
@@ -196,6 +221,25 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="box box-primary">
+                                    <div class="box-header">
+                                        <h3 class="box-title">{{ trans('core::core.title.non translatable fields') }}</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="checkbox">
+                                            <?php $old_menu_feedbacks_show = $sets->menu_feedbacks_show ?>
+                                            <label for="menu_feedbacks_show">
+                                                <input id="menu_feedbacks_show"
+                                                       name="menu_feedbacks_show"
+                                                       type="checkbox"
+                                                       class="flat-blue"
+                                                       {{ ((bool) $old_menu_feedbacks_show) ? 'checked' : '' }}
+                                                       value="1" />
+                                                {{ trans('pagesets::sets.form.home_feedbacks_show') }}
+                                            </label><br>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="box box-primary">
@@ -211,6 +255,9 @@
                         <div class="tab-pane " id="pagesets_tab4">
                             <div class="col-md-9">
                                 <div class="box box-primary">
+                                    <div class="box-header">
+                                        <h3 class="box-title">{{ trans('core::core.title.translatable fields') }}</h3>
+                                    </div>
                                     <div class="box-body">
                                         <div class="nav-tabs-custom">
                                             {{--==========TAB HEADERS========--}}
@@ -244,6 +291,25 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="box box-primary">
+                                    <div class="box-header">
+                                        <h3 class="box-title">{{ trans('core::core.title.non translatable fields') }}</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="checkbox">
+                                            <?php $old_events_feedbacks_show = $sets->events_feedbacks_show ?>
+                                            <label for="events_feedbacks_show">
+                                                <input id="events_feedbacks_show"
+                                                       name="events_feedbacks_show"
+                                                       type="checkbox"
+                                                       class="flat-blue"
+                                                       {{ ((bool) $old_events_feedbacks_show) ? 'checked' : '' }}
+                                                       value="1" />
+                                                {{ trans('pagesets::sets.form.home_feedbacks_show') }}
+                                            </label><br>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="box box-primary">
@@ -258,6 +324,9 @@
                         <div class="tab-pane " id="pagesets_tab5">
                             <div class="col-md-9">
                                 <div class="box box-primary">
+                                    <div class="box-header">
+                                        <h3 class="box-title">{{ trans('core::core.title.translatable fields') }}</h3>
+                                    </div>
                                     <div class="box-body">
                                         <div class="nav-tabs-custom">
                                             {{--==========TAB HEADERS========--}}
@@ -291,6 +360,25 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="box box-primary">
+                                    <div class="box-header">
+                                        <h3 class="box-title">{{ trans('core::core.title.non translatable fields') }}</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="checkbox">
+                                            <?php $old_collective_feedbacks_show = $sets->collective_feedbacks_show ?>
+                                            <label for="collective_feedbacks_show">
+                                                <input id="collective_feedbacks_show"
+                                                       name="collective_feedbacks_show"
+                                                       type="checkbox"
+                                                       class="flat-blue"
+                                                       {{ ((bool) $old_collective_feedbacks_show) ? 'checked' : '' }}
+                                                       value="1" />
+                                                {{ trans('pagesets::sets.form.home_feedbacks_show') }}
+                                            </label><br>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="box box-primary">
@@ -305,6 +393,9 @@
                         <div class="tab-pane " id="pagesets_tab6">
                             <div class="col-md-9">
                                 <div class="box box-primary">
+                                    <div class="box-header">
+                                        <h3 class="box-title">{{ trans('core::core.title.translatable fields') }}</h3>
+                                    </div>
                                     <div class="box-body">
                                         <div class="nav-tabs-custom">
                                             {{--==========TAB HEADERS========--}}
@@ -335,6 +426,25 @@
                                                     @endforeach
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box box-primary">
+                                    <div class="box-header">
+                                        <h3 class="box-title">{{ trans('core::core.title.non translatable fields') }}</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="checkbox">
+                                            <?php $old_gallery_feedbacks_show = $sets->gallery_feedbacks_show ?>
+                                            <label for="gallery_feedbacks_show">
+                                                <input id="gallery_feedbacks_show"
+                                                       name="gallery_feedbacks_show"
+                                                       type="checkbox"
+                                                       class="flat-blue"
+                                                       {{ ((bool) $old_gallery_feedbacks_show) ? 'checked' : '' }}
+                                                       value="1" />
+                                                {{ trans('pagesets::sets.form.home_feedbacks_show') }}
+                                            </label><br>
                                         </div>
                                     </div>
                                 </div>

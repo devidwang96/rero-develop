@@ -6,8 +6,8 @@
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
-        <li><a href="{{ route('admin.mats.matcategory.index') }}">{{ trans('mats::matcategories.title.categories') }}</a></li>
-        <li class="active">{{ trans('mats::matcategories.title.edit category') }}</li>
+        <li><a href="{{ route('admin.mats.matcategory.index') }}">{{ trans('mats::matcategories.title.matcategories') }}</a></li>
+        <li class="active">{{ trans('mats::matcategories.title.edit matcategory') }}</li>
     </ol>
 @stop
 
@@ -70,12 +70,14 @@
                     <div class="radio">
                         <input type="radio" id="type_gallery" name="category_type"
                                value="4"{{ $matcategory->category_type === 4 ? ' checked' : '' }}>
-                        <label for="type_gallery">{{ trans('mats::matcategories.parents.parent_3') }}</label>
+                        <label for="type_gallery">{{ trans('mats::matcategories.parents.parent_4') }}</label>
                     </div>
 
-                    <p>{{ trans('mats::matcategories.help.select_category_image') }}</p>
 
-                    @mediaSingle('MatsCategory', $matcategory)
+                    <div class="hidden">
+                        <p>{{ trans('mats::matcategories.help.select_category_image') }}</p>
+                        @mediaSingle('MatsCategory', $matcategory)
+                    </div>
                 </div>
             </div>
         </div>

@@ -22,14 +22,12 @@
     <div class="page page-home">
         <div class="bg-gallery" style="display:none">
             <?php  $bg_gallery = $files->findMultipleFilesByZoneForEntity('HomeGalleryBg', $pagesets->first()); ?>
-
-            <?php if (isset($bg_gallery)): ?>
+            <?php if (!($bg_gallery)->isEmpty()): ?>
             <?php foreach ($bg_gallery as $image): ?>
 
-            <img src="{{ $image->path }}">
+            <img src="{{ Imagy::getThumbnail($image->path, 'PageBg') }}">
 
             <?php endforeach; ?>
-
             <?php endif; ?>
         </div>
 
@@ -136,7 +134,7 @@
                                             </div>
                                             <div class="modal-paysection">
                                                 <h3>Заказать блюдо</h3>
-                                                {!! Form::open(['route' => ['admin.orders.order.user_store'], 'method' => 'post']) !!}
+                                                {!! Form::open(['route' => ['user_create_order'], 'method' => 'post']) !!}
                                                     <div class="row">
                                                         <div class="col-xs-12 col-md-6">
                                                             <label for="dish_{{$dish->id}}_name">
@@ -152,6 +150,7 @@
                                                         </div>
 
                                                         <input type="hidden" name="dish_id" value="{{$dish->id}}">
+                                                        <input type="hidden" name="curpage" value="{{ Request::route()->getName() }}">
                                                         <div class="col-xs-12 modal_submit">
                                                             <button type="submit" class="button button-red">Заказать</button>
                                                         </div>
@@ -173,7 +172,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="modal-paysection">
-                                                {!! Form::open(['route' => ['admin.orders.order.user_store'], 'method' => 'post']) !!}
+                                                {!! Form::open(['route' => ['user_create_order'], 'method' => 'post']) !!}
                                                 <div class="row">
                                                     <div class="col-xs-12 col-md-6">
                                                         <label for="dish_{{$dish->id}}_name">
@@ -189,6 +188,7 @@
                                                     </div>
 
                                                     <input type="hidden" name="dish_id" value="{{$dish->id}}">
+                                                    <input type="hidden" name="curpage" value="{{ Request::route()->getName() }}">
                                                     <div class="col-xs-12 modal_submit">
                                                         <button type="submit" class="button button-red">Заказать</button>
                                                     </div>
@@ -259,12 +259,12 @@
 
 
         <?php if($pagesets->first()->home_feedbacks_show == 1): ?>
-            <section class="section-feedbacks home-section">
+            <section class="section-feedbacks home-section bg-darkbrown">
                 <h2 class="section-title">{{ trans('translation::translations.frontend.mainpage.leave_feedback_string') }}</h2>
                 <p class="title-addition">{{ trans('translation::translations.frontend.mainpage.leave_feedback_addition') }}</p>
 
                 <div class="container">
-                    {!! Form::open(['route' => ['admin.feedbacks.feedback.user_store'], 'method' => 'post']) !!}
+                    {!! Form::open(['route' => ['user_create_feedback'], 'method' => 'post']) !!}
                     <div class="row">
                         <div class="col-md-6">
                             <label for="name">
@@ -292,7 +292,7 @@
                     {{--<label for="feedback_photo"> Загрузите файл--}}
                         {{--<input type="file" name="feedback_photo" id="feedback_photo" style="display:none">--}}
                     {{--</label>--}}
-
+                    <input type="hidden" name="curpage" value="{{ Request::route()->getName() }}">
                     {!! Form::close() !!}
                 </div>
 
@@ -322,25 +322,6 @@
 
 @section('scripts')
     <script>
-        var galleries = $('.bg-gallery img');
-        var images = [];
-        var i = 0;
-        galleries.each(function(){
-            images[i] = $(this).attr('src');
-            i++;
-        });
-        i = 0;
-
-        $('body').css('background-image', 'url('+ images[0] +')');
-        setInterval(function(){
-            $('body').css('background-image', 'url('+ images[i] +')');
-            if(i == (images.length -1)){
-                i = 0;
-            } else {
-                i++;
-            }
-        },7000);
-
         $('.page-home__about .about__slider').slick({
             centerMode: true,
             centerPadding: '',

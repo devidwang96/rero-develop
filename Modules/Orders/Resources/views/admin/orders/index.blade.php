@@ -37,8 +37,8 @@
                             <?php foreach ($orders as $order): ?>
                             <tr>
                                 <td>
-                                    <a href="{{ route('admin.orders.order.edit', [$order->id]) }}">
-                                       Будет фотка
+                                    <a href="{{ route('admin.dishes.dish.edit', [$order->dish_id]) }}">
+                                       {{ $dishes->find($order->dish_id)->title }}
                                     </a>
                                 </td>
                                 <td>

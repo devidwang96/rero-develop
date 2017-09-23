@@ -23,15 +23,10 @@ $router->group(['prefix' =>'/feedbacks'], function (Router $router) {
         'middleware' => 'can:feedbacks.feedback.create'
     ]);
 
-    $router->post('feedback/usercreate', [
-        'as' => 'admin.feedbacks.feedback.user_store',
-        'uses' => 'FeedbackController@user_store'
-    ]);
-
-    $router->post('feedback/usercreatemenu', [
-        'as' => 'admin.feedbacks.feedback.user_store_menu',
-        'uses' => 'FeedbackController@user_store_menu'
-    ]);
+//    $router->post('feedback/usercreate', [
+//        'as' => 'admin.feedbacks.feedback.user_store',
+//        'uses' => 'FeedbackUserController@user_create'
+//    ]);
 
     $router->get('feedback/{feedback}/edit', [
         'as' => 'admin.feedbacks.feedback.edit',
@@ -48,6 +43,4 @@ $router->group(['prefix' =>'/feedbacks'], function (Router $router) {
         'uses' => 'FeedbackController@destroy',
         'middleware' => 'can:feedbacks.feedback.destroy'
     ]);
-// append
-
 });

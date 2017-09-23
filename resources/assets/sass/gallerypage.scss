@@ -1,0 +1,29 @@
+.page-gallery {
+  .page__content-gallery {
+    background: $darkbrown;
+    padding: 40px 0;
+    * {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .gallery-tabs{
+      li{
+        list-style-type:none;
+        border-top:1px solid #fff;
+        &:last-child{
+          border-bottom:1px solid #fff;
+        }
+        a{
+          width:100%;
+          display:block;
+          padding:5px;
+          transition:all 0.3s;
+          &:hover{
+            color:$red;
+          }
+        }
+      }
+    }
+  }
+}

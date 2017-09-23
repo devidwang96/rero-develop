@@ -9,6 +9,17 @@ if (! App::runningInConsole()) {
         'as' => 'homepage',
         'middleware' => config('asgard.page.config.middleware'),
     ]);
+    $router->post('/feedback/usercreate', [
+        'uses' => 'PublicController@feedback_user_create',
+        'as' => 'user_create_feedback'
+    ]);
+
+    $router->post('/order/usercreate', [
+        'uses' => 'PublicController@order_user_create',
+        'as' => 'user_create_order'
+    ]);
+
+
     $router->get('/menu', [
         'uses' => 'PublicController@menu',
         'as' => 'menu',

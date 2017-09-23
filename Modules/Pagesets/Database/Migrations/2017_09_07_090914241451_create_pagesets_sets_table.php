@@ -22,7 +22,14 @@ class CreatePagesetsSetsTable extends Migration
             $table->tinyInteger('home_dishes_menu_show')->default(0);
             $table->tinyInteger('home_dishes_show')->default(0);
             $table->tinyInteger('home_gallery_show')->default(0);
+
             $table->tinyInteger('home_feedbacks_show')->default(0);
+            $table->tinyInteger('news_feedbacks_show')->default(0);
+            $table->tinyInteger('events_feedbacks_show')->default(0);
+            $table->tinyInteger('menu_feedbacks_show')->default(0);
+            $table->tinyInteger('collective_feedbacks_show')->default(0);
+            $table->tinyInteger('gallery_feedbacks_show')->default(0);
+
             $table->tinyInteger('home_addition_content_show')->default(0);
 
 

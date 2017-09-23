@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="97a74412-3bf2-458e-af09-6222497b81bd" name="ReroTest" url="http://ftp.a0159394.xsph.ru">
-        <fileTransfer host="ftp.a0159394.xsph.ru" port="21" rootFolder="/domains/a0159394.xsph.ru/public_html/">
+        <fileTransfer host="ftp.a0159394.xsph.ru" port="21" rootFolder="/domains/a0159394.xsph.ru/public_html">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

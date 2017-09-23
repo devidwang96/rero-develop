@@ -4,7 +4,17 @@ namespace Modules\Page\Http\Controllers;
 
 use Illuminate\Contracts\Foundation\Application;
 use Modules\Core\Http\Controllers\BasePublicController;
+
+
 use Modules\Feedbacks\Events\FeedbackIsCreating;
+use Modules\Feedbacks\Entities\Feedback;
+use Modules\Feedbacks\Http\Requests\CreateFeedbackRequest;
+use Modules\Feedbacks\Repositories\FeedbackRepository;
+
+use Modules\Orders\Entities\Order;
+use Modules\Orders\Http\Requests\CreateOrderRequest;
+use Modules\Orders\Repositories\OrderRepository;
+
 use Modules\Menu\Repositories\MenuItemRepository;
 use Modules\Page\Entities\Page;
 use Modules\Page\Repositories\PageRepository;
@@ -14,8 +24,10 @@ use Modules\Media\Repositories\FileRepository;
 use Modules\Dishes\Entities\Dish;
 use Modules\Dishes\Entities\DishCategory;
 
-use Modules\PageSets\Entities\Sets;
-use Modules\Feedbacks\Entities\Feedback;
+use Modules\Pagesets\Entities\Sets;
+
+use Modules\Mats\Entities\Mat;
+use Modules\Mats\Entities\MatCategory;
 
 class PublicController extends BasePublicController
 {
@@ -28,11 +40,20 @@ class PublicController extends BasePublicController
      */
     private $app;
 
-    public function __construct(PageRepository $page, Application $app)
+    private $feedback;
+    private $file;
+
+    private $order;
+
+    public function __construct(PageRepository $page, Application $app, FileRepository $file, FeedbackRepository $feedback, OrderRepository $order)
     {
         parent::__construct();
         $this->page = $page;
         $this->app = $app;
+
+        $this->file = $file;
+        $this->feedback = $feedback;
+        $this->order = $order;
     }
 
     /**
@@ -69,42 +90,74 @@ class PublicController extends BasePublicController
         return view('home', compact('dishes', 'files', 'categories', 'pagesets', 'feedbacks'));
     }
 
+
+
+
+
     public function news(FileRepository $files)
     {
-
-
-        return view('news');
+        $mats = Mat::all()->where('status', '=', 1)->where('mat_type', '=', 1);
+        $mat_categories = MatCategory::all()->where('status', '=', 1)->where('category_type', '=', 1);
+        $feedbacks = Feedback::all()->where('status', '=', 1);
+        $pagesets = Sets::all();
+        return view('news', compact( 'mats', 'mat_categories', 'feedbacks', 'pagesets', 'files'));
     }
     public function newsInner(FileRepository $files)
     {
-
-
-        return view('news-inner');
+        $mats = Mat::all()->where('status', '=', 1)->where('mat_type', '=', 1);
+        $mat_categories = MatCategory::all()->where('status', '=', 1)->where('category_type', '=', 1);
+        $feedbacks = Feedback::all()->where('status', '=', 1);
+        $pagesets = Sets::all();
+        return view('news-inner', compact( 'mats', 'mat_categories', 'feedbacks', 'pagesets', 'files'));
     }
     public function gallery(FileRepository $files)
     {
-
-
-        return view('gallery');
+        $mats = Mat::all()->where('status', '=', 1)->where('mat_type', '=', 4);
+        $mat_categories = MatCategory::all()->where('status', '=', 1)->where('category_type', '=', 4);
+        $feedbacks = Feedback::all()->where('status', '=', 1);
+        $pagesets = Sets::all();
+        return view('gallery', compact( 'mats', 'mat_categories', 'feedbacks', 'pagesets', 'files'));
     }
     public function events(FileRepository $files)
     {
-
-
-        return view('events');
+        $mats = Mat::all()->where('status', '=', 1)->where('mat_type', '=', 2);
+        $mat_categories = MatCategory::all()->where('status', '=', 1)->where('category_type', '=', 2);
+        $feedbacks = Feedback::all()->where('status', '=', 1);
+        $pagesets = Sets::all();
+        return view('events', compact( 'mats', 'mat_categories', 'feedbacks', 'pagesets', 'files'));
     }
     public function eventsInner(FileRepository $files)
     {
-
-
-        return view('events-inner');
+        $mats = Mat::all()->where('status', '=', 1)->where('mat_type', '=', 2);
+        $mat_categories = MatCategory::all()->where('status', '=', 1)->where('category_type', '=', 2);
+        $feedbacks = Feedback::all()->where('status', '=', 1);
+        $pagesets = Sets::all();
+        return view('events-inner', compact( 'mats', 'mat_categories', 'feedbacks', 'pagesets', 'files'));
     }
     public function collective(FileRepository $files)
     {
-
-
-        return view('collective');
+        $mats = Mat::all()->where('status', '=', 1)->where('mat_type', '=', 3);
+        $mat_categories = MatCategory::all()->where('status', '=', 1)->where('category_type', '=', 3);
+        $feedbacks = Feedback::all()->where('status', '=', 1);
+        $pagesets = Sets::all();
+        return view('collective', compact( 'mats', 'mat_categories', 'feedbacks', 'pagesets', 'files'));
     }
+
+
+    public function feedback_user_create(CreateFeedbackRequest $request){
+        $this->feedback->create($request->all());
+        return redirect()->route($request->curpage)
+            ->withSuccess(trans('feedbacks::feedback.messages.feedback created by user'));
+    }
+
+
+    public function order_user_create(CreateOrderRequest $request){
+        $this->order->create($request->all());
+        return redirect()->route($request->curpage)
+            ->withSuccess(trans('orders::orders.messages.order created by user'));
+    }
+
+
     public function menu(FileRepository $files)
     {
 

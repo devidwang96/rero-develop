@@ -65,8 +65,10 @@
                         <input type="radio" id="type_gallery" name="category_type" value="4"><label for="type_gallery">{{ trans('mats::matcategories.parents.parent_4') }}</label>
                     </div>
 
-                    <p>{{ trans('mats::matcategories.help.select_category_image') }}</p>
-                    @mediaSingle('MatsCategory')
+                    <div class="hidden">
+                        <p>{{ trans('mats::matcategories.help.select_category_image') }}</p>
+                        @mediaSingle('MatsCategory')
+                    </div>
                 </div>
             </div>
         </div>
